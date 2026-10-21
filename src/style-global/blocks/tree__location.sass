@@ -1,0 +1,147 @@
+.tree__location
+  max-width: 530px
+  width: 100%
+  margin:  60px  auto 0px auto
+  &__head
+    background: #FFFFFF
+    text-align: center
+    padding: 17px
+    box-shadow: 3px 3px 14px rgba(0, 0, 0, 0.05)
+    border-radius: 2px
+    color: #3D4465
+    font-style: normal
+    font-weight: bold
+    font-size: 24px
+    line-height: 27px
+  &__body
+    padding-left: 70px
+    margin-left: 35px
+    position: relative
+    overflow: hidden
+    +r(475)
+      margin-left: 10px
+      padding-left: 20px
+    &__item
+      padding-top: 30px
+      position: relative
+      margin-bottom: 1px
+      &:after
+        content: ''
+        position: absolute
+        top: 0px
+        left: -70px
+        width: 1px
+        height: calc(100% + 7px)
+        border-left: 2px dotted #3D4465
+        +r(475)
+          left: -20px
+      &:last-child
+        &:after
+          height: 58px
+          top: 0px
+      &:before
+        content: ''
+        position: absolute
+        top: 80px
+        left: 30px
+        width: 1px
+        height: calc(100% - (60px + 40px))
+        border-left: 2px dotted #3D4465
+    &__parent, &__child
+      display: flex
+      align-items: center
+
+    &__parent
+      margin-bottom: 10px
+      position: relative
+      &:after
+        content: ''
+        position: absolute
+        top: 50%
+        left: -70px
+        transform: translateY(-50%)
+        width: 70px
+        height: 1px
+        border-top: 2px dotted #3D4465
+        +r(475)
+          left: -20px
+          width: 20px
+      a
+        color: #3D4465
+        font-style: normal
+        font-weight: bold
+        font-size: 16px
+        line-height: 19px
+        margin-right: 7px
+        max-width: 75%
+        overflow: hidden
+        text-overflow: ellipsis
+      .v-icon
+        opacity: 0
+        color: #93A2DD
+        font-size: 18px
+      &:hover
+        .v-icon
+          opacity: 1
+      .icon__parent
+        margin-right: 10px
+        height: 60px
+        width: 60px
+        min-width: 60px
+        background-color: #FCBD00
+        box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.15)
+        border-radius: 2px
+        position: relative
+        padding: 10px
+        svg
+          width: 100%
+          height: 100%
+    &__child
+      padding-left: 90px
+      margin: 20px 0px 20px 30px
+      position: relative
+      +r(475)
+        padding-left: 30px
+      &:after
+        content: ''
+        position: absolute
+        top: 50%
+        left: 0px
+        transform: translateY(-50%)
+        width: 90px
+        height: 1px
+        border-top: 2px dotted #3D4465
+        +r(475)
+          width: 30px
+      &:last-child
+        margin-bottom: 0px
+      a
+        color: #3D4465
+        font-style: normal
+        font-weight: bold
+        font-size: 13px
+        line-height: 15px
+        margin-right: 7px
+        max-width: 75%
+        overflow: hidden
+        text-overflow: ellipsis
+      .v-icon
+        opacity: 0
+        color: #93A2DD
+        font-size: 18px
+      &:hover
+        .v-icon
+          opacity: 1
+      .icon__child
+        background: #19B200
+        box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.15)
+        border-radius: 2px
+        margin-right: 10px
+        height: 40px
+        width: 40px
+        min-width: 40px
+        padding: 8px
+        svg
+          width: 100%
+          height: 100%
+

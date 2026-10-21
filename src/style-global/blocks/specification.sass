@@ -1,0 +1,64 @@
+.specification__edit
+  display: grid
+  grid-template-columns: repeat(2, minmax(calc(50% - 28px), calc(50% - 10px)))
+  column-gap: 28px
+  width: 100%
+  align-items: center
+  .button
+    justify-self: end
+    grid-column-start: 2
+  +r(768)
+    grid-template-columns: 100%
+    .button
+      justify-self: center
+      grid-column-start: 1
+.specification__row
+  display: grid
+  grid-template-columns: 1fr 1fr
+  align-items: end
+  margin-bottom: 28px
+  .box__button
+    width: 100%
+    justify-content: flex-start
+    &.wrap
+      .button
+        margin-right: 5px
+      +r(960)
+        flex-direction: column
+        align-items: start
+        +r(575)
+          flex-direction: column
+          flex-wrap: wrap
+          justify-content: space-between
+          .button
+            min-width: 100%!important
+            margin-top: 5px
+        .button
+          min-width: 200px
+          &:last-child
+            margin-top: 5px
+  .setting__specification
+    justify-self: end
+    width: 280px
+    .input-box
+      margin-bottom: 0px
+
+  .toCatalog
+    justify-self: start
+  +r(575)
+    grid-template-columns: 1fr
+    grid-gap: 28px
+    .toCatalog
+      justify-self: center
+      grid-row-start: 2
+    .setting__specification
+      justify-self: start
+      width: 100%
+      grid-row-start: 1
+.setting__specification__radio
+  .v-input--selection-controls
+    margin-top: 0px
+    margin-bottom: 15px
+  .input-box
+    margin-bottom: 0px
+

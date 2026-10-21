@@ -1,0 +1,203 @@
+.categoryBox
+  display: flex
+  align-items: center
+  justify-content: center
+.button__category
+  width: fit-content
+  padding: 0 15px
+  height: 40px
+  background: #269447
+  color: #fff
+  font-size: 14px
+  font-weight: 600
+  box-sizing: border-box
+  border-radius: 10px
+  white-space: nowrap
+  display: flex
+  align-items: center
+  justify-content: center
+  transition: all .3s linear
+  margin-left: 155px
+  +r(1100)
+    margin-left: 20px
+  +r(769)
+    position: static
+  svg
+    margin-right: 10px
+  &.disabled
+    border: 1px solid #C5CBE3
+    background-color: #C5CBE3
+    color: white
+    .v-icon
+      transition: all .3s linear
+      margin-left: 12px
+      color: white
+    &:hover
+      background-color: silver
+      .v-icon
+        transition: all .3s linear
+        margin-left: 12px
+        color: white
+  +r(768)
+    display: none
+  .v-icon
+    transition: all .3s linear
+    margin-left: 12px
+    color: #5867DD
+  &:hover, &.active
+    background-color: #1e6130
+    color: white
+    transition: all .3s linear
+    .v-icon
+      transition: all .3s linear
+      color: white
+.section
+  .filterCatalog
+    left: 300px
+  &.full
+    .filterCatalog
+      left: 50px
+.filterCatalog
+  background: #FFFFFF
+  box-shadow: 5px 20px 25px rgba(0, 0, 0, 0.05), 0px 0px 10px rgba(0, 0, 0, 0.05)
+  border-radius: 5px
+  position: fixed
+  max-height: 85vh
+  height: auto
+  min-height: 150px
+  top: 65px
+  margin: 10px
+  right: 0px
+  display: grid
+  grid-template-columns: 1fr 4fr
+  transform: translateX(-200%)
+  transition: all .3s linear
+  opacity: 0
+  &.open
+    opacity: 1
+    transform: translateX(0)
+  .parent
+    height: 100%
+    max-height: inherit
+    overflow: auto
+    .item
+      display: grid
+      grid-template-columns: 1fr 16px
+      align-items: center
+      padding: 10px
+      cursor: pointer
+      &:hover
+        background: #F0F3FF
+        border-radius: 5px
+      .v-icon
+        color: rgba(0, 0, 0, 0.4)
+        transition: all .3s linear
+        transform: rotateY(0deg)
+      .name
+        text-decoration: none
+        &:hover
+          text-decoration: underline
+      &.open
+        color: #269447
+        .v-icon
+          color: #269447
+  .children
+    display: grid
+    grid-template-columns: 1fr
+    max-height: 85vh!important
+    //height: 100%!important
+    overflow: auto
+    .item
+      width: 33%
+      padding: 10px
+      overflow: hidden
+    .head-name
+      font-style: normal
+      font-weight: 600
+      font-size: 14px
+      line-height: 140%
+      color: #3D4465
+      width: 100%
+      text-overflow: ellipsis
+      overflow: hidden
+      display: block
+      white-space: nowrap
+      cursor: pointer
+      border-radius: 4px
+      &:hover
+        text-decoration: underline
+      &.active
+        text-decoration: none
+        background-color: #f0f3ff
+.sitebar-header
+  .button__category
+    display: none
+    background-color: #5578EB
+    color: white
+    width: 100%
+    transition: all .3s linear
+    margin: 0px
+    +r(768)
+      display: flex
+    .v-icon
+      transition: all .3s linear
+      color: white
+.filterCatalogMobile
+  position: fixed
+  top: 0
+  left: -120%
+  width: 100%
+  background-color: white
+  padding: 20px 0px
+  max-height: 100vh
+  height: 100vh
+  overflow: auto
+  opacity: 0
+  &.open
+    left: 0
+    opacity: 1
+  .close
+    position: fixed
+    top: 20px
+    right: 10px
+  .item-parent
+    &.open
+      .item-top
+        background: #F0F3FF
+        .v-icon
+          transform: rotate(90deg)
+  .item-top
+    padding: 10px 20px
+    cursor: pointer
+    display: grid
+    grid-template-columns: 1fr 20px
+    align-items: center
+    .name
+      color: #3D4465
+      font-size: 14px
+      line-height: 140%
+      &:hover
+        text-decoration: underline
+  .child
+    padding: 0px 20px
+    .head-name
+      font-weight: 600
+      &:hover
+        text-decoration: underline
+    .item
+      margin-top: 5px
+      .child-name
+        &.head-name
+          margin-bottom: 5px
+.noCategory
+  grid-column: 1/4
+  display: flex
+  align-items: center
+  justify-content: center
+  height: 100%
+  span
+    color: #3D4465
+    font-size: 22px
+    text-transform: uppercase
+    width: 100%
+    text-align: center

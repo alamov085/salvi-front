@@ -1,0 +1,115 @@
+.section-head
+  .search-head
+    max-height: 60px
+    height: 60px
+    display: flex
+    align-items: center
+    justify-content: flex-start
+    position: relative
+    width: calc(100% - 350px)
+    margin-left: 50px
+    +r(1500)
+      margin-left: 50px
+    +r(1100)
+      width: calc(100% - 300px)
+    +r(768)
+      display: none
+    form
+      height: fit-content
+    &__input
+      margin-left: 40px
+      position: relative
+      font-size: 16px
+      color: #000
+      transition: .3s
+      width: 400px
+      background: #F6F6F8
+      border-radius: 10px
+      padding: 10px 20px 10px 60px
+
+      +r(1200)
+        margin-left: 10px
+
+      &:active, &:hover, &:focus
+        box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, .4)
+
+        &::placeholder
+          opacity: 0
+
+      &::placeholder
+        transition: .3s
+        font-size: 14px
+        font-weight: 400
+        color: #C4C4C4
+    .searchIcon
+      position: absolute
+      left: 48px
+      z-index: 1
+      top: 50%
+      transform: translateY(-50%)
+      margin: 0
+      +r(1200)
+        left: 25px
+      .searchBtnIcon
+        opacity: 0
+        width: 0px
+      .searchDefault
+        opacity: 1
+    &.active
+      .search-head__input
+        padding-left: 50px
+      .searchIcon
+        opacity: 1
+        left: calc(100% - 65px)
+        background-color: #646c9a
+        svg
+          path
+            fill: white
+        .searchBtnIcon
+          opacity: 1
+          width: inherit
+        .searchDefault
+          opacity: 1
+          width: 0px
+.vsm-list
+  .search-head
+    display: none
+    +r(768)
+      display: flex
+      background: #FFFFFF
+      border-radius: 4px
+      position: relative
+      padding: 10px
+      width: calc(100% - 0px)
+      margin: 0 auto
+      .searchIcon
+        position: absolute
+        left: -5px
+        top: 50%
+        transform: translateY(-50%)
+        margin: 0
+        .searchBtnIcon
+          opacity: 0
+          width: 0px
+        .searchDefault
+          opacity: 1
+      input
+        width: 100%
+        font-size: 16px
+        padding-left: 40px
+        height: 100%
+    &.active
+      .search-head__input
+        padding-left: 10px
+      .searchIcon
+        left: calc(100% - 45px)
+        background-color: #646c9a
+        svg
+          path
+            fill: white
+        .searchBtnIcon
+          opacity: 1
+          width: inherit
+        .searchDefault
+          opacity: 1
+          width: 0px

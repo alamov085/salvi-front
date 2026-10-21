@@ -1,0 +1,82 @@
+.upload__file
+  .section__box__item
+    display: flex
+    align-items: center
+    .upload__file__desc
+      display: flex
+      flex-direction: column
+      justify-content: space-between
+      margin-left: 20px
+      .size
+        color: #A1A8C3
+        font-size: 13px
+        font-weight: normal
+      .name
+        color: #646C9A
+        font-size: 13px
+        font-weight: normal
+    .upload__file__desc__setting
+      margin-left: auto
+      display: flex
+      align-items: center
+  .doc_icon
+    color: #DADADA
+    font-size: 32px
+  .icon-delete
+    i
+      font-size: 24px
+      &:before
+        color: #93A2DD
+    &:hover
+      color: red
+      i
+        &:before
+          color: red
+  .icon__download
+    i
+      font-size: 24px
+      color: #93A2DD !important
+    &:hover
+      color: #19B200 !important
+      i
+        color: #19B200 !important
+  .load__file
+    background: rgba(100, 221, 23, 0.02)
+    box-sizing: border-box
+    border-radius: 4px
+    position: relative
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    padding: 22px
+    &:before
+      content: ""
+      position: absolute
+      border: 1px dashed #19B200
+      top: -3px
+      bottom: -3px
+      left: -3px
+      right: -3px
+    .v-btn
+      background-color: transparent
+      box-shadow: none
+      cursor: pointer
+      &:hover
+        background-color: transparent
+        box-shadow: none
+        &:before
+          background-color: transparent
+        i
+          color: #19B200
+          opacity: 0.7
+      input
+        position: absolute
+        opacity: 0
+        width: 100%
+        height: 100%
+        z-index: 2
+      i
+        color: #19B200
+        font-size: 32px
+        cursor: pointer

@@ -1,0 +1,206 @@
+.create-order__delivery-tabs .v-tabs__bar
+  background: none
+.container-lk.flex .section .order__page
+  .section__content__head
+    margin-bottom: 15px
+  .matching__step
+    display: grid
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr))
+    grid-gap: 1em
+    align-items: center
+    .item
+      box-shadow: 2px 2px 10px rgba(0, 35, 219, 0.05)
+      border-radius: 4px
+      overflow: hidden
+      &.not-active
+        opacity: 0.5
+        .v-toolbar__content
+          .v-btn
+            display: none
+
+      &:first-child
+        margin-left: 0px
+      &__body
+        display: flex
+        flex-direction: column
+        align-items: center
+        justify-content: center
+        background-color: white
+        padding: 10px
+        svg
+          display: block
+          margin-top: 25px
+          margin-bottom: 20px
+    .theme--light.v-toolbar
+      border-radius: 4px 4px 0px 0px
+      .v-btn
+        box-shadow: none
+        i
+          color: white
+    .v-toolbar__title
+      color: white
+      font-weight: 500
+      font-size: 14px
+      line-height: 150%
+    .v-btn.status__step
+      border-radius: 4px
+      width: 100%
+      padding: 10px 0px
+      text-align: center
+      box-shadow: none
+      .v-btn__content
+        font-style: normal
+        font-weight: normal
+        font-size: 13px
+        line-height: 150%
+        text-transform: none
+    .v-btn.status__step.green
+      background-color: rgba(25, 178, 0, 0.1)
+      color: #19B200
+    .v-btn.status__step.orange
+      background-color: #FCBD00
+      color: white
+    .v-btn.status__step.silver
+      background-color: #A1A8C3
+      color: white
+
+.footer__order-page
+  display: flex
+  justify-content: center
+  button, .downloadFileExel
+    margin: 0 auto
+  +r(868)
+    flex-direction: column
+    button, .downloadFileExel
+      margin-bottom: 10px
+      width: 100%
+.list__orders__accordion
+  &__item
+    transition: 0.3s
+    overflow: hidden
+    padding-top: 0px
+  .section__content__head
+    grid-template-columns: 1fr auto auto
+    margin-bottom: 0px
+    .button__yellow.no-plus
+      margin-right: 10px
+    .v-btn
+      cursor: pointer
+      color: #646C9A
+      justify-self: center
+      grid-row: 2
+      grid-column: 1/4
+      margin: 0px
+      .v-icon
+        &.open
+          transform: rotate(-180deg)
+    +r(768)
+      .button:not(.no-plus)
+        grid-column: 3
+      .button__yellow.no-plus
+        width: 38px
+        max-width: 38px
+        overflow: hidden
+        color: transparent
+        padding: 0px
+        font-size: 0px
+        position: relative
+        grid-column: 2
+        grid-row: 1
+        justify-self: start
+        &:after
+          font-family: 'Material Icons'
+          -webkit-font-feature-settings: 'liga'
+          -webkit-font-feature-settings: 'liga' 1
+          -moz-font-feature-settings: 'liga' 1
+          font-feature-settings: 'liga' 1
+          content: 'space_bar'
+          font-size: 20px
+          width: 20px
+          height: 20px
+          line-height: 1
+          position: absolute
+          left: 50%
+          top: 50%
+          transform: translateY(-50%) translateX(-50%)
+          color: white
+
+  .table__tamplate-2
+    box-shadow: none !important
+    .v-datatable
+      .productDelete
+        background-color: rgb(238, 238, 238)
+        opacity: 0.7
+        &:hover
+          background-color: rgb(238, 238, 238) !important
+      .productExceeds
+        background-color: #ffdfd4
+        &:hover
+          background-color: #ffdfd4 !important
+.order__page
+  .v-toolbar__content
+    height: initial !important
+    min-height: 60px
+  .tollbar__mobile
+    .toolbar__wrap
+      width: 100%
+      padding: 10px 0px
+      display: flex
+      align-items: center
+      justify-content: flex-start
+      +r(768)
+        align-items: flex-start
+        justify-content: center
+        flex-direction: column
+        .status-desc
+          margin-left: 0px
+  .note
+    margin-top: 10px
+    padding: 10px
+    background-color: white
+    display: grid
+    grid-template-columns: 24px 1fr 24px
+    align-items: center
+    .v-icon
+      font-size: 30px
+    .quote-start
+      cursor: pointer
+      align-self: start
+    .quote-end
+      align-self: end
+
+    p
+      text-align: center
+      font-size: 15px
+      font-weight: normal
+      font-style: italic
+      color: #646C9A
+      margin: 15px
+
+.section
+  .btn__back
+    background-color: #FAFAFA
+    box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.4)
+    position: fixed
+    bottom: 60px
+    z-index: 20
+    margin: 0px
+    left: calc(50% + 300px)
+    transform: translateX(calc(-50% - 150px))
+    opacity: 0.7
+    transition: 0.3s
+    i
+      color: #19b200!important
+    &:hover
+      opacity: 1
+      background-color: #19b200
+      i
+        color: white!important
+  &.full
+    .btn__back
+      left: calc(50% + 50px)
+      transform: translateX(calc(-50% - 25px))
+      +r(768)
+        left: 50%
+        transform: translateX(-50%)
+        bottom: 55px

@@ -1,0 +1,127 @@
+.step__wrap
+  display: flex
+  align-items: stretch
+  justify-content: flex-start
+  flex-wrap: wrap
+  margin: 0 -5px
+  &.transition__wrap
+    display: grid
+    grid-template-columns: repeat(auto-fit, minmax(200px, 270px))
+    grid-auto-rows: minmax(180px, auto)
+    align-items: stretch
+    grid-gap: 1em
+    width: 100%
+    cursor: move
+    +r(768)
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))
+
+.container-lk.flex .section .card__step.card__step__drag
+  display: flex
+  flex-direction: column
+  flex-grow: 0
+  border-radius: 4px
+  transition: 0.5s
+  box-shadow: 2px 2px 10px rgba(0, 35, 219, 0.05)
+  z-index: 10
+  &.not__active
+    .v-toolbar
+      background-color: #dadada!important
+      border-color: #dadada!important
+  &__btn
+    color: #5578EB
+    font-style: normal
+    font-weight: 500
+    font-size: 12px
+    line-height: 150%
+    cursor: pointer
+    display: block
+    margin-top: auto
+    position: absolute
+    bottom: 15px
+  .v-sheet
+    border-bottom-right-radius: 4px
+    border-bottom-left-radius: 4px
+    box-shadow: none
+    height: calc(100% - 64px)
+    .container.fluid
+      height: 100%
+      position: relative
+      .status
+        padding: 3px 5px
+        font-size: 13px
+        border-radius: 4px!important
+        &.green
+          color: white
+        &.red
+          color: white!important
+  .v-toolbar
+    border-top-right-radius: 4px
+    border-top-left-radius: 4px
+    box-shadow: none
+  .v-toolbar__title
+    color: white
+    font-style: normal
+    font-weight: 500
+    font-size: 13px
+    line-height: 150%
+  .v-btn
+    box-shadow: none!important
+    .v-btn__content
+      color: white
+  .box__role
+    display: flex
+    align-items: center
+    flex-wrap: wrap
+    padding-bottom: 25px
+    min-height: 49px
+    overflow: hidden
+    span
+      max-width: 80%
+      text-overflow: ellipsis
+      overflow: hidden
+      margin-right: 5px
+      margin-bottom: 5px
+      display: block
+      background-color: #F0F3FF
+      border-radius: 4px
+      padding: 0 5px
+      color: #3D4465
+      font-style: normal
+      font-weight: normal
+      font-size: 13px
+      line-height: 150%
+.hint__role
+  display: flex
+  flex-wrap: wrap
+  span
+    margin-right: 5px
+    margin-bottom: 5px
+    background-color: #F0F3FF
+    border-radius: 4px
+    display: flex
+    padding: 0 5px
+    color: #3D4465
+    font-style: normal
+    font-weight: normal
+    font-size: 13px
+    line-height: 150%
+.card__step__plus
+  height: 100%
+  border: 1px dashed #646C9A
+  display: flex
+  align-items: center
+  justify-content: center
+  align-self: stretch
+  cursor: pointer
+  min-height: 179px
+  i
+    width: 35px
+    height: 2px
+    display: flex
+    background-color: #646C9A
+    position: absolute
+  i:first-child
+    transform: rotate(90deg)
+
+.flex.card__step[draggable='true'] .v-toolbar
+  background-color: #FFD600!important

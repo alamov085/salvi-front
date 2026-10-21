@@ -1,0 +1,287 @@
+.v-dialog:not(.v-dialog--fullscreen)
+  .container
+    +rmin(576)
+      max-width: 100% !important
+
+.modal-scrollBox
+  .caption
+    font-size: 14px
+    font-weight: 600
+    color: #646C9A
+    margin-bottom: 10px
+
+  .scrollWrap
+    height: 250px
+    overflow: auto
+    width: 100%
+    display: flex
+    flex-direction: column
+    align-items: flex-start
+
+.v-card__title
+  box-shadow: inset 0px -1px 0px #C4C4C4
+  border-radius: 4px 4px 0px 0px
+  position: relative
+
+  .modal--head--action
+    display: grid
+    grid-template-columns: 1fr 1fr
+    grid-column-gap: 20px
+
+  .v-btn
+    position: absolute
+    right: 0px
+    top: 50%
+    transform: translateY(-50%)
+    margin: 0px 15px
+
+    .v-icon
+      color: #3D4465
+
+  .headline
+    font-size: 18px
+    color: #3D4465
+    font-weight: bold
+    white-space: nowrap
+    max-width: 100%
+    overflow: hidden
+    text-overflow: ellipsis
+    +r(768)
+      font-size: 13px
+      line-height: 1
+
+  .headline__title
+    font-size: 14px
+    color: #3D4465
+    font-weight: normal
+    white-space: nowrap
+    max-width: 85%
+    overflow: hidden
+    text-overflow: ellipsis
+//datepicker
+.v-date-picker-title__date
+  height: 42px
+
+.v-date-picker-title__date > div
+  position: absolute !important
+//  modal btn footer
+.theme--light.v-sheet
+  overflow: hidden
+  display: flex
+  flex: 1 1 100%
+  flex-direction: column
+  max-height: 100%
+  max-width: 100%
+
+.v-card__actions
+  box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.1)
+  padding: 20px 24px !important
+  display: grid
+  grid-template-columns: 1fr 1fr 1fr
+  grid-gap: 10px
+
+  button
+    margin-left: 0px !important
+
+  +r(600)
+    grid-template-columns: 1fr
+  +rh(600)
+    padding: 7px 24px !important
+  +r(600)
+    .spacer
+      display: none
+
+.v-text-field > .v-input__control > .v-input__slot:after
+  color: #E8ECFA
+
+.v-dialog
+  &::-webkit-scrollbar-track
+    background-color: transparent
+
+  &::-webkit-scrollbar
+    width: 5px
+    border-radius: 2px
+    background-color: transparent
+
+  &::-webkit-scrollbar-thumb
+    background-color: #646C9A
+    border: 0px solid transparent
+
+.markup-input_box
+  width: 64px
+  min-width: 64px
+  display: flex
+  align-items: center
+  justify-content: space-between
+  padding-left: 10px
+  transition: 0.3s
+  height: 30px
+  max-height: 30px
+  position: relative
+
+  &:before
+    content: '%'
+    left: 33px
+    position: absolute
+
+  &.active
+    width: 100px
+    background: #FAFAFA
+    border: 0.75px solid #E8ECFA
+    box-sizing: border-box
+    border-radius: 2px
+    justify-content: space-between
+    transition: 0.3s
+
+  input
+    font-size: 14px
+    color: #646C9A
+    width: 23px
+    max-width: 23px
+    position: relative
+    overflow: hidden
+    text-align: right
+
+  input[type="number"]
+    -webkit-appearance: textfield
+      -moz-appearance: textfield
+        appearance: textfield
+
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button
+    -webkit-appearance: none
+
+.v-dialog:not(.v-dialog--fullscreen)
+  max-height: 90%
+  display: flex
+
+  .container
+    //height: 300px
+    -webkit-backface-visibility: hidden
+    backface-visibility: hidden
+    flex: 1 1 auto
+    overflow-y: auto
+
+    &::-webkit-scrollbar-track
+      background-color: transparent
+
+    &::-webkit-scrollbar
+      width: 5px
+      height: 5px
+      border-radius: 2px
+      background-color: transparent
+
+    &::-webkit-scrollbar-thumb
+      background-color: #646C9A
+      border: 0px solid transparent
+      height: 5px
+      border-radius: 5px
+
+
+.v-dialog.datepicker
+  +r(960)
+    +rh(768)
+      @media screen and (orientation: landscape)
+        width: 100% !important
+        .v-picker
+          width: 100% !important
+          overflow-x: auto
+        .v-picker__title
+          position: absolute
+          width: 200px
+        .v-picker__body
+          margin-left: 200px
+          width: calc(100% - 200px) !important
+          height: 270px
+        .v-card__actions
+          grid-template-columns: 1fr
+          position: absolute
+          width: 200px
+          left: 0px
+          bottom: 15px
+          padding: 0px !important
+    +r(375)
+      margin: 0 auto
+
+.v-dialog--fullscreen
+  .v-card__text, .container
+    width: 100% !important
+    max-width: 100% !important
+    overflow: auto
+    flex: 1
+
+.dialogInput
+  .v-card__actions
+    grid-template-columns: 1fr 1fr
+
+    button
+      justify-self: center
+
+.dialogInput
+  overflow: hidden
+  +rh(375)
+    width: 256px
+    max-width: 256px !important
+    .v-card__text
+      height: 180px !important
+    .v-card__title
+      max-width: 256px !important
+
+.plus__modal__box
+  .input-box
+    margin-bottom: 0px
+
+  label
+    font-size: 13px
+    color: #5578EB
+
+  .btn__plus
+    width: 20px !important
+    min-width: 20px !important
+    height: 20px !important
+    background-color: white !important
+    border-radius: 50% !important
+    margin: 0px !important
+    margin-right: 8px !important
+    margin-left: 2px !important
+    border: 1px solid #5578EB
+
+    i
+      color: #5578EB !important
+      font-size: 18px !important
+
+.attrPlus
+  width: 100%
+
+  &-wrap
+    display: grid
+    grid-template-columns: 1fr
+    grid-gap: 20px
+
+    .attrItem
+      display: grid
+      grid-template-columns: 200px 1fr 85px
+      border: 1px solid #E8ECFA
+      border-radius: 4px
+      align-items: center
+      .v-input
+        &:after
+          content: ''
+          position: absolute
+          height: 90%
+          width: 1px
+          background-color: #C5CBE3
+          top: 50%
+          right: 0
+          transform: translateY(-50%)
+      .action
+        display: flex
+        align-items: center
+        height: 100%
+        justify-content: space-between
+        padding: 0 10px
+        .v-btn
+          margin: 0px
+
+    .v-input.v-text-field .v-input__control .v-input__slot
+      border-color: transparent !important

@@ -1,0 +1,793 @@
+.basket
+  position: relative
+  z-index: 100
+  overflow: visible
+  border-radius: 4px
+  width: 50px
+  display: flex
+  justify-content: center
+
+  & *:not(.v-icon)
+    font-family: "Montserrat", sans-serif
+
+  &__change-product
+    padding: 5px 20px
+    font-size: 12px
+    font-weight: 600
+    color: #BF2117
+    background: #FFE1E4
+    border-radius: 10px
+    cursor: pointer
+    text-align: center
+    &:hover
+      opacity: 0.8
+
+  &__cancel-delete
+    padding: 5px 20px
+    font-size: 12px
+    font-weight: 600
+    color: #ffffff
+    background: #269447
+    border-radius: 10px
+    cursor: pointer
+    text-align: center
+
+    &:hover
+      opacity: 0.8
+
+  &__no-product
+    display: flex
+    flex-direction: column
+    align-items: center
+    padding: 100px 30px 0
+    &-text
+      font-size: 20px
+      font-weight: 600
+      text-align: center
+      color: #222222
+      padding-bottom: 20px
+    &-button
+      width: fit-content
+      padding: 10px 20px
+      font-size: 20px
+      background: #269447
+      border-radius: 10px
+      color: #ffffff
+      text-decoration: none
+
+      &:hover
+        color: #ffffff
+        text-decoration: none
+        opacity: 0.8
+
+  .action
+    display: flex
+    justify-content: flex-end
+    svg
+      cursor: pointer
+  &__modal-close
+    cursor: pointer
+    padding: 10px
+  &__overflow
+    display: none
+    z-index: 100
+    position: fixed
+    inset: 0
+    background: rgba(212, 212, 212, 0.75)
+  &__sub-header
+    display: flex
+    margin: 0 30px
+    padding: 25px 0 25px
+    align-items: center
+    justify-content: space-between
+    border-bottom: 1px solid #E3E3E3
+
+    &-title
+      color: #222222
+      font-size: 14px
+      font-weight: 600
+
+    &-back
+      color: #269447
+      font-size: 14px
+      cursor: pointer
+      font-weight: 600
+      &:hover
+        color: #269447
+
+  &.fullscreen
+    .basket__icon
+      svg
+        path
+          fill: #646c9a
+  &.fullscreen.open
+
+    z-index: 111
+    .bascet__modal
+      +r(768)
+        transition: height 0.5s ease-out, width 0s ease-out, opacity 0.4s ease-in, transform 0s ease-out
+    .basket__icon
+      display: none
+
+    .bascet__modal
+      z-index: 111
+      position: fixed
+      top: 0px
+      left: 0px
+      right: 0px
+      bottom: 0px
+      width: 100%
+      height: 100%
+      max-width: 100%
+      max-height: 100vh
+
+      .basket__head
+        height: 135px
+
+        .modal-close
+          position: absolute
+          right: 20px
+
+        .select__order
+          width: 100%
+
+      .basket__body
+        &__top
+          display: none
+
+        .item-row
+          grid-template-columns: 1fr 1fr
+          height: 140px
+
+          .status
+            max-width: 40px
+
+          .img-name
+            &.opacity
+              opacity: 0.5
+            img
+              display: none
+
+          .price
+            grid-row: 2
+
+          .count
+            grid-row: 2
+
+          .summ
+            grid-row: 2
+            justify-self: end
+
+          .action
+            justify-self: end
+
+          &__history
+            +r(768)
+              grid-template-columns: 1fr 1fr !important
+              height: 65px
+              grid-row-gap: 5px
+              grid-column-gap: 0px
+              .date
+                justify-self: start
+              .user
+                justify-self: end
+              .action__user
+                grid-row: 2
+                grid-column: 1/4
+
+  &.open
+    box-shadow: 2px 2px 15px rgba(0, 12, 53, 0.1)
+    transition: max-width 0.3s ease-out, max-height 0.3s ease-out, bottom 0.3s, left 0.3s, transform 0.3s
+    overflow: visible
+
+    .basket__overflow
+      display: block
+
+    .basket__icon
+      transition: 0.5s
+      opacity: 1
+
+    .bascet__modal
+      z-index: 111
+      position: fixed
+      top: 0
+      bottom: 0
+      right: 0
+      width: 800px
+      height: 100vh
+      max-height: 100vh
+      max-width: 90vw
+      border-radius: 0%
+      opacity: 1
+      transform: scale(1)
+
+
+    .blur
+      -webkit-filter: blur(3px)
+      -moz-filter: blur(3px)
+      -o-filter: blur(3px)
+      -ms-filter: blur(3px)
+      filter: blur(3px)
+      filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius='3')
+      -webkit-transition: 0.3s -webkit-filter linear
+      -o-transition: 0.3s -o-filter linear
+      transition: all 0.3s linear
+    //filter: url(#blur)
+    .basket__body
+      opacity: 1
+      transition: 0.5s
+      transition-delay: 0.5s
+      overflow: auto
+
+  .bascet__modal
+    background-color: #FFFFFF
+    transition: height .3s ease-out, max-width .3s ease-out, width .3s ease-out, opacity 0.4s ease-in, transform 0.1s ease-out
+    height: 0px
+    width: 0px
+    max-width: 0vw
+    opacity: 0
+    overflow: hidden
+    display: flex
+    flex-direction: column
+    transform: scale(0)
+    border-radius: 100% 100% 0% 100%
+    +r(768)
+      transition: height 0s ease-out, width 0s ease-out, opacity 0.4s ease-in, transform 0s ease-out
+      border-radius: 0% 0% 0% 0%
+
+
+  &__icon
+    cursor: pointer
+    z-index: 1
+    display: flex
+    align-items: center
+    justify-content: center
+    padding: 5px
+
+    &__count
+      position: absolute
+      width: auto
+      padding: 0 5px
+      min-width: 16px
+      height: 16px
+      color: #fafafa
+      font-size: 10px
+      border-radius: 8px
+      background-color: #F24949
+      display: flex
+      align-items: center
+      justify-content: center
+      right: 2px
+      top: -5px
+
+      &.big
+        right: -5px
+
+
+  &__head
+    display: flex
+    padding: 10px 20px
+    box-sizing: border-box
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.07)
+    border-radius: 4px 4px 0px 0px
+    align-items: center
+    height: 100px
+    justify-content: space-between
+
+    &.newOrder
+      .select__order
+        .name
+          height: 48px
+
+          .v-input__slot
+            min-height: 48px
+
+    .caption
+      color: #222
+      font-style: normal
+      font-weight: bold
+      font-size: 24px
+      line-height: 25px
+      font-family: "Montserrat", sans-serif !important
+
+
+    .select__order
+      background: #FAFAFA
+      border: 1px solid #C5CBE3
+      box-sizing: border-box
+      //padding: 10px 20px
+      box-shadow: 2px 2px 10px rgba(0, 35, 219, 0.05)
+      border-radius: 3px
+      display: grid
+      grid-template-columns: 1fr
+      //grid-column-gap: 5px
+
+      .name
+        grid-column: 1/3
+        color: #3D4465
+        font-size: 16px
+        line-height: 20px
+        font-weight: 500
+        height: 78px
+        transition: 0.3s
+
+      .location, .cost
+        font-style: normal
+        font-weight: normal
+        font-size: 11px
+        line-height: 15px
+        color: #646C9A
+
+  &__body
+    transition: 0s
+    opacity: 0
+    transition-delay: 0s
+    padding-top: 0px
+    display: flex
+    flex-direction: column
+    flex: 1 1
+    overflow: hidden
+    min-height: 200px
+    position: relative
+    &::-webkit-scrollbar-track
+      background-color: rgba(172, 184, 229, 0.4)
+
+    &::-webkit-scrollbar
+      width: 5px
+      border-radius: 2px
+      background-color: transparent
+
+    &::-webkit-scrollbar-thumb
+      background-color: #646C9A
+      border: 0px solid transparent
+      border-radius: 4px
+
+
+    &__top
+      padding: 10px 20px
+      display: grid
+      grid-template-columns: 30px 1fr 90px 86px 80px 24px
+      grid-gap: 10px
+      width: 100%
+      position: sticky
+      top: 0px
+      background-color: white
+      right: 0px
+      left: 0px
+      z-index: 1
+      box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2)
+
+      span:first-child
+        min-width: 300px
+
+      span
+        font-style: normal
+        font-weight: normal
+        font-size: 13px
+        line-height: 150%
+        color: #646C9A
+
+      &__history
+        grid-template-columns: 105px 125px 1fr
+
+    &__wrap
+      padding: 0px
+      display: grid
+      grid-template-columns: 1fr
+      grid-gap: 0px
+      height: fit-content
+      //overflow: auto
+
+      &::-webkit-scrollbar-track
+        background-color: rgba(172, 184, 229, 0.4)
+
+      &::-webkit-scrollbar
+        width: 5px
+        border-radius: 2px
+        background-color: transparent
+
+      &::-webkit-scrollbar-thumb
+        background-color: #646C9A
+        border: 0px solid transparent
+        border-radius: 4px
+
+      &.history
+        display: flex
+        flex-direction: column-reverse
+
+      .item-row
+        padding: 10px 0
+        margin: 0 30px
+        border-bottom: 1px solid #E3E3E3
+        display: grid
+        grid-template-columns: 280px 1fr 1fr 60px
+        grid-gap: 10px
+        align-items: center
+        height: 90px
+        opacity: 1
+        transition-delay: 0.3s
+        position: relative
+        -webkit-filter: blur(0px)
+        -moz-filter: blur(0px)
+        -o-filter: blur(0px)
+        -ms-filter: blur(0px)
+        filter: blur(0px)
+        filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius='0')
+        -webkit-transition: 0.3s -webkit-filter linear
+        -o-transition: 0.3s -o-filter linear
+        transition: all 0.3s linear
+
+        &:after
+          content: ''
+          background-color: transparent
+          width: 0%
+          height: 100%
+          display: block
+          position: absolute
+          left: 0px
+          top: 0px
+        &.productDelete
+          background-color: rgba(242, 73, 73, 0.2)
+        &.active
+          animation: opacityRow 1.2s ease-out
+
+          &:after
+            animation: afterFull 1.2s ease-out
+            transition: 1s
+            transition-delay: 0.3s
+
+        &.activeBG
+          animation: opacityRow 1.2s ease-out
+
+          &:after
+            animation: afterFull 1.2s ease-out
+            transition: 1s
+            transition-delay: 0.3s
+
+        .status
+          width: 24px
+          height: 24px
+
+          i
+            border-radius: 50%
+            overflow: hidden
+            font-size: 16px
+            cursor: pointer
+
+        .name
+          min-width: 170px
+          color: #646C9A
+          font-style: normal
+          font-weight: normal
+          font-size: 13px
+          line-height: 150%
+          align-self: center
+
+        .img-name
+          display: grid
+          grid-template-columns: 100px 1fr
+          grid-gap: 10px
+          align-self: stretch
+          &.opacity
+            opacity: 0.2
+
+          img
+            width: initial
+            height: 100%
+            max-height: 76px
+            max-width: 100%
+            object-fit: contain !important
+
+          .name
+            min-width: 170px
+            color: #222
+            font-weight: 600
+            font-style: normal
+            font-size: 14px
+            line-height: 150%
+            align-self: center
+
+        .summ, .price
+          font-weight: 600
+          font-size: 14px
+          line-height: 20px
+          color: #222
+          text-align: center
+
+        &__history
+          grid-template-columns: 105px 125px 1fr
+          color: #646C9A
+          font-size: 13px
+          height: 50px
+          border-bottom: 1px solid rgba(0, 0, 0, 0.1)
+
+
+  &__footer
+    padding: 30px
+    display: grid
+    grid-gap: 12px
+    grid-template-columns: 1fr
+    align-items: center
+    background: #FFFFFF
+    box-shadow: 0px -4px 8px 0px rgba(0, 0, 0, 0.07)
+    border-radius: 0px
+
+    .create-order
+      display: flex
+      width: 100%
+
+    .button__green
+      width: 100%
+      max-width: 100%
+      padding: 15px 25px 15px 25px
+      border-radius: 10px
+      font-weight: 600
+      font-size: 14px
+    .button__purple
+      width: 100%
+      width: 100%
+      max-width: 100%
+      padding: 15px 25px 15px 25px
+      border-radius: 10px
+      font-weight: 600
+      font-size: 14px
+    .button__green-basket
+      width: 100%
+      padding: 15px 45px 15px 25px
+      background: #269447
+      border-radius: 10px
+      display: flex
+      align-items: center
+      justify-content: space-between
+      font-size: 14px
+      font-weight: 600
+
+      &:hover
+        background: #013220
+      &.no-menu
+        padding: 15px 25px 15px 25px
+
+      span
+        margin-left: auto
+
+    &__row
+      display: flex
+      gap: 10px
+      +r(768)
+        grid-template-columns: auto 1fr
+        grid-gap: 0px
+
+      &__col
+        display: grid
+        grid-template-columns: auto 1fr
+
+        .button
+          font-size: 12px !important
+          box-shadow: none
+
+        +r(758)
+          grid-gap: 5px
+
+        .button__purple-outline
+          justify-self: start
+          width: 128px
+          padding: 0px
+
+          &.mini-list.history
+            &:after
+              content: 'history'
+
+        .button__purple, .button__yellow, .button__green
+          justify-self: end
+          transition: all .3s
+
+        .label
+          color: #646C9A
+          font-size: 13px
+
+        .summ
+          grid-column: 4
+          justify-self: center
+          display: flex
+          justify-content: space-between
+          align-items: center
+          +r(768)
+            grid-column: 1/4
+            justify-content: space-between
+            width: 100%
+
+          .label
+            margin-right: 10px
+
+          .val
+            color: #3D4465
+            font-size: 16px
+
+        .countOrders
+          grid-column: 1/3
+          display: flex
+          align-items: center
+
+          .label
+            margin-right: 10px
+
+          .val
+            color: #3D4465
+            font-size: 14px
+
+
+  //basket custom select//
+  .select__order
+    width: 400px
+
+    .v-menu__content .v-select-list .v-list .v-list__tile
+      font-size: 14px
+      white-space: nowrap
+      max-width: 100%
+      overflow: hidden
+      text-overflow: ellipsis
+      display: block
+      line-height: 30px
+
+    .input-box.inputBasket
+      .v-list
+
+      .v-input.v-text-field
+        .v-input__control
+          .v-input__slot
+            border: none !important
+            background-color: transparent
+
+            .v-input__prepend-inner
+              white-space: nowrap
+
+            input
+              background-color: transparent
+
+      .inputBasket__itemList
+        position: sticky
+        top: 0px
+        background-color: white
+        z-index: 1
+
+        .v-list__tile
+          color: #FCBD00
+          cursor: pointer
+          height: 36px
+
+        .v-btn
+          border: 1px solid
+
+
+    .el-input__prefix, .el-input__suffix
+      position: absolute
+      display: flex
+      align-items: center
+
+      .el-input__icon
+        height: inherit
+
+    .el-select
+      background-color: transparent
+
+      .el-input__inner
+        border: none
+        background-color: transparent
+        padding-left: 0px
+        color: #3D4465
+        font-size: 16px
+        line-height: 20px
+        font-weight: 500
+        height: 21px
+
+      .el-input.is-focus .el-input__inner
+        border: none
+        background-color: transparent
+
+.btn-add-order
+  text-align: left
+  padding-right: 40px
+  &.cancel
+    background-color: #F24949 !important
+    border-color: #F24949 !important
+.circle
+  height: 50px
+  width: 50px
+  position: absolute
+  z-index: -1
+  transform: rotate(210deg)
+
+  .background
+    fill: transparent
+    stroke: #1abc9c
+    transition: all 1s ease
+
+  .foreground
+    fill: transparent
+    stroke-dasharray: 160
+    stroke-dashoffset: -160
+    stroke: #EE3769
+    transform-origin: 50% 50%
+    transform: rotate(90deg)
+    transition: all 0s ease
+    z-index: -1
+
+.basket__icon.plus
+  animation-delay: 0s !important
+  cursor: pointer
+  transform: scale(1)
+  animation: plusClose 1.5s linear !important
+
+  .background
+    stroke: transparent
+
+  .foreground
+    transition: all 2s ease
+    stroke-dasharray: 160
+    stroke-dashoffset: -320
+    transform: rotate(90deg)
+
+.basket.open
+  .basket__icon.plus
+    animation: plus 2.5s linear !important
+
+    .background
+      stroke: transparent
+
+    .foreground
+      transition: all 1.5s ease
+      stroke-dasharray: 160
+      stroke-dashoffset: -320
+      transform: rotate(90deg)
+
+.basket__icon
+  &.pulse
+    animation: shadow-pulse 10s 0s linear infinite
+    animation-delay: 0.3s
+
+@keyframes plusClose
+  0%
+    transform: scale(1)
+  33%
+    transform: scale(1.2)
+  65%
+    transform: scale(0.8)
+  100%
+    transform: scale(1)
+
+@keyframes plus
+  0%
+    transform: scale(1)
+  20%
+    transform: scale(1.2)
+  30%
+    transform: scale(0.8)
+  40%
+    transform: scale(1)
+    box-shadow: 0 0 0 0px rgba(252, 189, 0, 0.2)
+  60%, 100%
+    box-shadow: 0 0 0 35px rgba(252, 189, 0, 0)
+
+@keyframes shadow-pulse
+  0%
+    box-shadow: 0 0 0 0px rgba(252, 189, 0, 0.2)
+  5%, 100%
+    box-shadow: 0 0 0 35px rgba(252, 189, 0, 0)
+
+@keyframes opacityRow
+  0%
+    opacity: 0.4
+  100%
+    opacity: 1
+
+@keyframes afterFull
+  0%
+    width: 0%
+    background-color: transparent
+  90%
+    width: 100%
+    background-color: rgba(244, 231, 190, 0.6)
+  100%
+    width: 100%
+    background-color: rgba(244, 231, 190, 0.6)
+    opacity: 1

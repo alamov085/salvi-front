@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Вибачте, сайт не доступний</title>
+    <link rel="icon" href="favicon.ico">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+</head>
+<style>
+    .plug {
+        position: relative;
+        min-height: 100vh;
+        width: 100vw;
+        background: #2d2f32;
+        color: #ffffff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    body, html {
+        margin: 0;
+    }
+    .plug__img {
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: 100%;
+        object-fit: contain;
+    }
+    .plug__text {
+        position: relative;
+        z-index: 1;
+    }
+    .plug__text h1 {
+        font-size: 50px;
+        text-align: center;
+        font-weight: 700;
+    }
+    .plug__text p {
+        font-size: 34px;
+        text-align: center;
+        font-weight: 700;
+        padding-top: 40px;
+    }
+</style>
+<body>
+    <div class="plug">
+        <img class="plug__img" src="bg-product-mask.png" alt="">
+        <div class="plug__text">
+            <h1>Вибачте, сайт зараз недоступний</h1>
+            <p>Спробуйте ще раз, через декілька хвилин</p>
+        </div>
+    </div>
+</body>
+
+<script>
+  const url = 'https://api.salvi.ua/v1/public/check-deploy';
+
+  async function pingUrl() {
+    try {
+      const response = await fetch(url);
+      const re = await response.json(); // или response.json(), если ты ждёшь JSON
+
+      console.log(re)
+      console.log(re.deploy)
+      console.log(re.deploy == 'finish')
+      if (re.deploy == 'finish') {
+        setTimeout(() => {
+          window.location.href = '/'
+        }, 5000);
+      } else {
+        setTimeout(pingUrl, 5000);
+      }
+    } catch (error) {
+      setTimeout(pingUrl, 5000); // Повтор при ошибке
+    }
+  }
+
+  pingUrl()
+</script>
+</html>

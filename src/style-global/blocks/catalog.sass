@@ -1,0 +1,766 @@
+.catalog__page
+  &.overlay
+    +r(768)
+      &:after
+        width: 100%
+        height: 100%
+        position: absolute
+        top: 0px
+        left: 0px
+        content: ''
+        z-index: 8
+        background-color: rgba(0, 0, 0, 0.4)
+
+  .section__content__head
+    display: grid
+    grid-template-columns: 1fr 1fr 1fr
+
+    +r(768)
+      grid-template-columns: 1fr 1fr 1fr
+      grid-row-gap: 20px
+
+    .caption
+      text-align: left
+      justify-self: start
+      +r(768)
+        grid-row: 1
+        justify-self: center
+
+    .filters-box
+      justify-self: end
+      grid-column: 3
+      +r(768)
+        grid-column-start: 1
+        grid-column-end: 4
+        width: 100%
+        display: grid!important
+        grid-template-columns: 50% 1fr
+        .v-menu
+          justify-self: end
+          flex-grow: 0
+          grid-row: 1
+          margin: 0!important
+        .head__iconBtn
+          justify-self: start
+          flex-grow: 0
+          margin: 0
+        label
+          display: none
+
+    .button
+      justify-self: center
+      z-index: 9
+      +r(768)
+        grid-row: 2
+        justify-self: start
+        &:after
+          font-family: 'Material Icons'
+          -webkit-font-feature-settings: 'liga'
+          -webkit-font-feature-settings: 'liga' 1
+          -moz-font-feature-settings: 'liga' 1
+          font-feature-settings: 'liga' 1
+          content: 'list'
+          font-size: 20px
+          color: white
+
+      &.active
+        z-index: 9
+
+    .v-menu
+      justify-self: end
+
+
+.v-input--radio-group__input
+  label
+    margin-bottom: 0px
+
+.box__sub
+  width: calc(100% - 200px)
+  height: 100%
+  position: absolute
+  left: 200px
+  overflow-x: auto
+  top: 0px
+  background-color: #FAFAFA
+
+.category__wrap
+  display: flex
+  flex-direction: column
+  flex: 1
+  background-color: white
+  box-shadow: 2px 2px 10px rgba(0, 35, 219, 0.05)
+  border-radius: 4px
+  padding: 0
+  position: relative
+  overflow: hidden
+  width: 100%
+  opacity: 0
+  max-height: 0px
+  transform: translateY(0px) scale(1)
+  transition: 0.3s
+  +r(768)
+    padding: 15px 5px
+
+  &.open
+    z-index: 1
+    position: relative
+    opacity: 1
+    padding: 15px 20px
+    max-height: 500px
+    transform: translateY(0px) scale(1)
+    +r(768)
+      z-index: 101
+      position: fixed
+      height: calc(100% - 100px)
+      top: 120px
+      left: 0
+      right: 0
+      bottom: 0
+
+  &__section
+    position: relative
+    flex: 1
+    height: 100%
+    @media screen and (max-width: 575px)
+      height: 300px
+      max-height: 300px
+
+    &__footer
+      display: grid
+      align-items: center
+      grid-template-columns: repeat(2, 1fr)
+      padding-top: 20px
+      .filterAdd
+        justify-self: end
+
+
+
+      span
+        font-size: 12px
+        font-style: normal
+        font-weight: normal
+        cursor: pointer
+        color: #5578EB
+
+        &:nth-child(2)
+          text-align: end
+
+        &:hover
+          opacity: 0.8
+
+        &.clear
+          color: #F24949
+
+      button
+        font-size: 14px
+        justify-self: end
+
+  &__box
+    height: 215px
+    overflow: hidden
+    +r(768)
+      overflow-y: auto
+      height: 100%
+
+    &__wrap
+      display: flex
+      justify-content: flex-start
+
+
+  .item
+    &.category__item
+      width: 200px
+      display: flex
+      align-items: center
+      transition: 0.3s
+      cursor: pointer
+
+      .arrow__btn
+        background: #d6dffa
+        font-size: 15px
+        margin-left: 5px
+        border-radius: 4px
+
+      i
+        color: #5578EB
+        transition: 0.2s
+
+      &.active
+        background-color: #F0F3FF
+
+        i.arrow
+          background: #6e8cee
+          color: white
+          transform: rotateY(180deg)
+
+      &:hover
+        background-color: #F0F3FF
+
+      label
+        margin-bottom: 0px
+        text-overflow: ellipsis
+        display: block
+        max-width: 111px
+        white-space: nowrap
+        overflow: hidden
+        flex-grow: 1
+        cursor: pointer
+        margin-right: 4px
+
+      .v-input
+        flex-grow: 0
+
+      .badge
+        background: #ffd600
+        color: var(--dark)
+        font-size: 10px
+
+    &.category__item__sub
+      width: 200px
+      position: absolute
+      top: 0px
+      left: 0px
+
+      .sub__category
+        .box__sub
+          position: initial !important
+          overflow-x: auto !important
+          width: auto !important
+          background-color: transparent !important
+
+          .category__item__sub
+            left: 200px
+
+
+    .v-input__slot
+      display: flex
+      align-items: flex-start
+
+      label
+        margin-bottom: 0px
+        color: #646C9A
+        font-size: 13px
+        word-break: break-word
+
+    .v-input--selection-controls
+      margin-top: 0px
+
+.catalog__table__head, .section__content__head
+  display: grid
+  grid-template-columns: 1fr 1fr 1fr
+  grid-gap: 20px
+  align-items: center
+  margin: 25px 0px
+  margin-top: 0px
+  min-height: 38px
+  +r(1024)
+    grid-template-columns: 1fr 1fr
+    +r(575)
+      grid-template-columns: 1fr
+
+  .v-dialog__container
+    display: none !important
+
+  .location__title
+    display: flex
+    align-items: center
+    justify-content: flex-end
+    position: relative
+    width: 100%
+    overflow: hidden
+    .v-btn
+      margin: 0px
+    .label
+      display: flex
+      color: #646C9A
+      font-weight: normal
+      font-size: 16px
+      margin-right: 5px
+    .name
+      display: flex
+      align-items: center
+      overflow: hidden
+      b
+        color: #646C9A
+        font-size: 16px
+        display: block
+
+
+  span.count__price
+    grid-column-start: 2
+    text-align: center
+    color: #646C9A
+    font-style: normal
+    font-weight: 500
+    font-size: 16px
+
+    &.hidden
+      visibility: hidden
+      opacity: 0
+      z-index: 0
+
+    +r(1024)
+      grid-column-start: 1
+      text-align: left
+      +r(575)
+        justify-self: center
+
+  button
+    max-width: 322px
+    justify-self: end
+    +r(575)
+      justify-self: center
+
+.table__tamplate-2
+  &.opaciiLast
+    table
+      position: relative
+      &:after
+        content: ''
+        position: absolute
+        width: 100%
+        height: 10px
+        box-shadow: 0px -20px 20px 6px white
+        background-color: transparent
+        left: 0px
+        bottom: 0px
+  .v-datatable
+    tbody
+      tr
+        td
+          .table__select
+            .v-input__slot
+              box-shadow: none !important
+
+              .v-select__selections
+                font-size: 13px
+                text-transform: none
+
+          &.img__table
+            cursor: pointer
+            position: relative
+            padding: 5px 15px !important
+
+            .img__display
+              width: 115px
+              height: 70px
+              max-height: 70px
+              object-fit: contain
+              opacity: 0
+              background-color: white
+              &.default
+                position: absolute
+                left: 0px
+                top: 50%
+                opacity: 1
+                z-index: 0
+                transform: translateY(-50%)
+              &.finishLoad
+                position: relative
+                opacity: 1
+
+.tooltip__catalog__table
+  background-color: #FFFFFF
+  opacity: 1 !important
+
+  .img__hover
+    width: 250px
+    height: 250px
+    object-fit: contain
+
+.tooltip__catalog__tile
+  background-color: #FFFFFF
+  opacity: 1 !important
+
+  .img__hover
+    width: 350px
+    height: 250px
+    object-fit: contain
+
+.category__select
+  margin-top: 28px
+  display: flex
+  align-items: center
+  justify-content: center
+
+  .item
+    border: 1px solid #F0F3FF
+    box-sizing: border-box
+    border-radius: 4px
+    background-color: white
+    font-size: 14px
+    color: #3D4465
+    display: flex
+    align-items: center
+    justify-content: space-between
+    padding: 5px 10px
+
+    i
+      margin-left: 30px
+      font-size: 14px
+      color: #5578EB
+      transition: 0.3s
+
+      &:hover
+        color: red
+        cursor: pointer
+        transform: rotate(180deg)
+
+.catalog__tile
+  padding-bottom: 170px
+  display: grid
+  width: 100%
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr))
+  grid-gap: 1em
+  +r(768)
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr))
+
+
+  .item.no-available
+    -webkit-filter: grayscale(100%)
+    filter: grayscale(100%)
+
+
+  .item
+    background-color: white
+    border-radius: 4px
+    padding: 10px
+    position: relative
+
+    &.add
+      box-shadow: 0px 0px 6px 1px rgba(42, 139, 26, 0.42)
+
+    &__head
+      height: 150px
+      width: 100%
+      .img__display
+        height: 100%
+        width: 100%
+        z-index: 1
+        img
+          height: 100%
+          width: 100%
+          object-fit: contain
+          opacity: 0
+          &.default
+            position: absolute
+            top: 50%
+            transform: translateY(-50%)
+            left: 0px
+            opacity: 1
+            z-index: -1
+          &.finishLoad
+            opacity: 1 !important
+            background-color: white
+            z-index: 1
+
+    &__body
+      display: flex
+      flex-direction: column
+
+      .number
+        color: #646C9A
+        height: 19px
+        font-size: 13px
+        line-height: 150%
+        display: block
+        font-weight: normal
+        font-style: normal
+
+      .name
+        font-style: normal
+        font-weight: 500
+        font-size: 16px
+        line-height: 150%
+        color: #3D4465
+        margin-bottom: 5px
+        height: 48px
+        align-items: start
+
+        display: block
+        display: -webkit-box
+        -webkit-line-clamp: 2
+        -webkit-box-orient: vertical
+        overflow: hidden
+        text-overflow: ellipsis
+        word-break: break-all
+
+      .chip
+        span
+          color: #5578EB
+          font-weight: 500
+          font-size: 13px
+          line-height: 150%
+          margin-bottom: 10px
+
+      .price
+        display: flex
+        align-items: center
+        justify-content: space-between
+        position: relative
+        height: 48px
+
+        span
+          color: #2A8B1A
+          font-style: normal
+          font-weight: bold
+          font-size: 18px
+          line-height: 150%
+
+        .v-btn
+          position: absolute
+          margin: 0 8px
+          right: 0px
+
+          &.btnAdd
+            background-color: #2A8B1A
+            &.v-btn--disabled
+              background-color: rgba(0,0,0,0.4)
+              cursor: not-allowed !important
+
+          &.btnClose
+            background-color: red
+            &.v-btn--disabled
+              background-color: rgba(0,0,0,0.4)
+              cursor: not-allowed !important
+
+      .action
+        margin-top: 5px
+
+        .input-box
+          margin-bottom: 10px
+          flex-direction: row
+          align-items: center
+          justify-content: space-between
+          display: flex
+
+      .price
+        .v-input--switch
+          margin-top: 0px
+          position: absolute
+          left: 0px
+          top: 0px
+          opacity: 0
+          padding: 0px
+          z-index: 2
+          justify-content: flex-end
+
+          .v-input__control
+            width: 100%
+
+          .v-input__slot
+            flex-direction: row-reverse
+            width: 100%
+            justify-content: space-between
+
+            label
+              color: #646C9A
+              margin-bottom: 0px
+              line-height: 150%
+              font-size: 13px
+              margin-right: 5px
+
+
+      .item__footer
+        position: absolute
+        bottom: -140px
+        height: 140px
+        overflow: auto
+        left: 0px
+        width: 100%
+        background-color: white
+        padding: 10px
+        z-index: 10
+        box-shadow: 0px 20px 15px rgba(0, 12, 53, 0.1)
+        border-bottom-left-radius: 4px
+        border-bottom-right-radius: 4px
+
+        .desc
+          min-height: 64px
+
+        button
+          width: 100%
+
+    &.add
+      .item__footer
+        box-shadow: 0px 6px 5px 1px rgba(42, 139, 26, 0.42) !important
+
+
+.catalog__table
+  .v-input--selection-controls__input
+    margin-right: 0px
+
+  .v-table__overflow
+    overflow: visible
+
+  table.v-table
+    min-width: 1110px
+
+.arrow__table
+  position: fixed !important
+  bottom: 20%
+  opacity: 1
+  z-index: 99
+
+  &.left
+    left: 300px
+
+  &.right
+    right: 0px
+
+.section.full
+  .box__arrow__table
+    .arrow__table
+      z-index: 99
+      position: fixed !important
+      opacity: 1
+      bottom: 20%
+
+      &.left
+        left: 50px
+
+      &.right
+        right: 0px
+
+.radio__view-catalog
+  .v-input--selection-controls .v-input__control
+    width: 100%
+
+.catalogFilterBtn
+  position: relative
+
+  &.hidden
+    opacity: 0
+    z-index: -1
+    visibility: hidden
+
+  +r(768)
+    &:after
+      font-family: "Material Icons"
+      -webkit-font-feature-settings: "liga"
+      -webkit-font-feature-settings: "liga" 1
+      font-feature-settings: "liga" 1
+      content: "menu" !important
+      font-size: 20px
+      width: 20px
+      height: 20px
+      line-height: 1
+      position: absolute
+      left: 50%
+      top: 50%
+      -webkit-transform: translateY(-50%) translateX(-50%)
+      transform: translateY(-50%) translateX(-50%)
+      color: white
+
+  &.active
+    color: transparent
+    background-color: #F24949 !important
+    border-color: #F24949 !important
+
+    &:after
+      font-family: "Material Icons"
+      -webkit-font-feature-settings: "liga"
+      -webkit-font-feature-settings: "liga" 1
+      font-feature-settings: "liga" 1
+      content: "close" !important
+      font-size: 20px
+      width: 20px
+      height: 20px
+      line-height: 1
+      position: absolute
+      left: 50%
+      top: 50%
+      -webkit-transform: translateY(-50%) translateX(-50%)
+      transform: translateY(-50%) translateX(-50%)
+      color: white
+.no-data-catalog
+  position: absolute
+  top: 50%
+  left: 0
+  transform: translateY(-50%)
+  width: 100%
+  display: flex
+  align-items: center
+  justify-content: center
+  &.relative
+    position: relative
+    top: 0px
+.orderInOrder
+  .v-menu__content
+    overflow: hidden
+    position: relative
+    display: flex
+    height: 100%
+    .v-select-list
+      width: 100%
+      height: 100%
+      overflow: auto
+.breadcrumbCatalog
+  display: flex
+  align-items: center
+  justify-content: flex-start
+  flex-wrap: wrap
+  grid-column: 1/3
+  span
+    position: relative
+    //cursor: pointer
+    display: flex
+    align-items: center
+    font-style: normal
+    font-weight: normal
+    font-size: 14px
+    line-height: 20px
+    color: #9c9c9c
+    opacity: 0.7
+    white-space: nowrap
+    padding: 0px 5px
+
+    a
+      color: #303030
+      &:hover
+        text-decoration: none
+
+    svg
+      margin: 0 0 0 10px
+
+
+    &:hover
+      text-decoration: underline
+    &:first-child
+      padding-left: 0px
+    &:last-child
+      opacity: 1
+      &:hover
+        cursor: default
+        text-decoration: none
+      &:after
+        display: none
+
+.section
+  &:after
+    content: " "
+    position: fixed
+    left: 0
+    top: 0
+    height: 100%
+    width: 100%
+    z-index: 15
+    visibility: hidden
+    background: rgba(0, 0, 0, 0.5)
+    opacity: 0
+    -webkit-transition: all 0.3s
+    transition: all 0.3s
+  &.overlay
+    &:after
+      content: " "
+      position: fixed
+      left: 0
+      top: 0
+      height: 100%
+      width: 100%
+      z-index: 1
+      visibility: visible
+      background: rgba(0, 0, 0, 0.5)
+      opacity: 1
+      -webkit-transition: all 0.3s
+      transition: all 0.3s

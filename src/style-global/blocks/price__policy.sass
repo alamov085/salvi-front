@@ -1,0 +1,67 @@
+.price__tree__category
+  &__head
+    display: grid
+    grid-template-columns: 1fr 1fr
+    label:last-child
+      justify-self: end
+  .v-treeview-node
+    +r(768)
+      margin-left: 0px
+      .v-treeview-node__children
+        margin-left: 24px
+    .v-treeview-node__root
+      .v-treeview-node__checkbox
+        color: #5578EB !important
+  .v-treeview-node
+    margin-left: 0px
+    &__content
+      flex-grow: 1
+      justify-content: space-between
+    &__label
+      display: none
+    input
+      background-color: #eaeaea
+      border-radius: 4px!important
+      transition: 0.3s
+      padding: 4px
+      text-align: right
+      width: 100%
+      max-width: 70px
+      &::placeholder
+        text-align: right
+      &:active,&:focus
+        background-color: #cad6ff
+        max-width: 100px
+    .v-treeview__label
+      max-width: 240px
+      overflow: hidden
+      white-space: nowrap
+      text-overflow: ellipsis
+      +r(574)
+        max-width: 142px
+    &__children
+      margin-left: 24px
+    .v-treeview-node__label
+      font-size: 14px
+.price-policy-modal
+  .input-box
+    margin-bottom: 0px
+  .price__tree__category
+    min-width: 600px
+.theme--light.v-treeview .v-treeview-node--active
+  background-color: #f0f1f5
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button
+  -webkit-appearance: none
+  margin: 0
+
+
+input[type=number]
+  -moz-appearance:textfield
+
+.v-treeview__label__box-input
+  display: flex
+  align-items: center
+  .chips-desc
+    background-color: #5578eb

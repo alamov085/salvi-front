@@ -1,0 +1,494 @@
+.v-sidebar-menu
+  -webkit-box-sizing: border-box
+  box-sizing: border-box
+  *
+    -webkit-box-sizing: border-box
+    box-sizing: border-box
+  top: 0
+  left: 0
+  bottom: 0
+  min-height: 100vh
+  max-height: 100vh
+  height: 100vh
+  position: fixed
+  z-index: 99
+  -webkit-transition: all 0.3s linear
+  transition: all 0.3s linear
+  +r(1100)
+    position: fixed
+    top: 0px
+    right: 0px
+    +r(768)
+
+  &.rtl
+    right: 0
+    left: inherit
+    text-align: right
+  > .vsm-list
+    width: 100%
+    height: 100%
+    overflow: hidden auto
+  &.rtl > .vsm-list
+    direction: rtl
+  &.vsm-collapsed.rtl > .vsm-list
+    padding-right: 0px
+    padding-left: 17px
+    float: right
+  .sitebar-header
+    +r(768)
+      padding: 20px
+  .vsm-item
+    position: relative
+    display: block
+    &.first-item > .vsm-link
+      > .vsm-icon
+        height: 30px
+        line-height: 30px
+        width: 30px
+        text-align: center
+        border-radius: 3px
+        font-size: 16px
+      &:after
+        content: ''
+        display: block
+        clear: both
+      .material-icons
+        font-size: 16px
+    &.mobile-item > .vsm-link > .vsm-icon
+      height: 30px
+      line-height: 30px
+      width: 30px
+      text-align: center
+      border-radius: 3px
+    &.active-item > .vsm-link, &.parent-active-item > .vsm-link
+      font-weight: 600
+  .vsm-link
+    position: relative
+    display: block
+    font-size: 16px
+    font-weight: 400
+    padding: 10px
+    line-height: 30px
+    text-decoration: none
+    z-index: 20
+    -webkit-transition: 0.3s all
+    transition: 0.3s all
+    &[disabled]
+      opacity: 0.4
+      pointer-events: none
+  .vsm-title
+    display: block
+    white-space: nowrap
+  .vsm-icon
+    float: left
+    line-height: 30px
+    margin-right: 10px
+  &.rtl .vsm-icon
+    float: right
+    margin-left: 10px
+    margin-right: 0px
+  .vsm-arrow
+    width: 30px
+    text-align: center
+    font-style: normal
+    font-weight: 900
+    position: absolute
+    right: 10px
+    top: 50%
+    -webkit-transform: translateY(-50%)
+    transform: translateY(-50%)
+    -webkit-transition: 0.3s -webkit-transform
+    transition: 0.3s -webkit-transform
+    transition: 0.3s transform
+    transition: 0.3s transform, 0.3s -webkit-transform
+    &:after
+      content: '\f105'
+      font-family: "Font Awesome 5 Free"
+    &.open-arrow
+      -webkit-transform: translateY(-50%) rotate(90deg)
+      transform: translateY(-50%) rotate(90deg)
+  &.rtl .vsm-arrow
+    left: 10px
+    right: inherit
+  .vsm-dropdown > .vsm-list
+    padding: 5px
+  .expand-enter-active, .expand-leave-active
+    -webkit-transition: height 0.35s ease
+    transition: height 0.35s ease
+    overflow: hidden
+  .expand-enter, .expand-leave-to
+    height: 0 !important
+  .slide-animation-enter-active
+    -webkit-animation: slide-animation 0.2s
+    animation: slide-animation 0.2s
+  .slide-animation-leave-active
+    animation: slide-animation 0.2s reverse
+  .vsm-header
+    height: 60px
+    max-height: 60px
+    font-size: 14px
+    font-weight: 600
+    padding: 10px
+    white-space: nowrap
+    text-transform: uppercase
+  .vsm-badge
+    padding: 0px 6px
+    font-size: 12px
+    border-radius: 3px
+    position: absolute
+    right: 10px
+    height: 20px
+    line-height: 20px
+    margin-top: 5px
+    font-weight: 600
+    text-transform: uppercase
+  &.rtl .vsm-badge
+    left: 10px
+    right: inherit
+  .collapse-btn
+    display: none
+    text-align: center
+    font-style: normal
+    font-weight: 900
+    position: absolute
+    height: 50px
+    left: 0
+    right: 0
+    bottom: 0
+    cursor: pointer
+    border: none
+    width: 100%
+    &:after
+      content: '\f337'
+      font-family: "Font Awesome 5 Free"
+  background-color: #212121
+  .vsm-link
+    color: #fff
+  .vsm-item
+    &.mobile-item >
+    .vsm-link
+      color: #fff
+      .vsm-icon
+        color: #fff
+        background-color: rgba(0, 0, 0, 0)
+        &:before
+          color: white
+    &.first-item
+      > .vsm-link > .vsm-icon
+        color: #fff
+        background-color: #1e1e21
+      &.active-item > .vsm-link, &.parent-active-item > .vsm-link
+        //-webkit-box-shadow: 3px 0px 0px 0px #4285f4 inset
+        //box-shadow: 3px 0px 0px 0px #4285f4 inset
+        background-color: #1A1A1A
+      &.active-item > .vsm-link > .vsm-icon, &.parent-active-item > .vsm-link > .vsm-icon
+        color: #fff
+        background-color: #1e1e21
+  &.rtl .vsm-item.first-item
+    &.active-item > .vsm-link, &.parent-active-item > .vsm-link
+      //-webkit-box-shadow: -3px 0px 0px 0px #4285f4 inset
+      //box-shadow: -3px 0px 0px 0px #4285f4 inset
+      background-color: #1A1A1A
+  &.vsm-default
+    .vsm-item.first-item.open-item > .vsm-link
+      color: #fff
+      background-color: #313131
+      > .vsm-icon
+        color: #fff
+        background-color: rgba(0, 0, 0, 0)
+    .vsm-link:hover
+      color: #fff
+      background-color: #313131
+  .vsm-dropdown > .vsm-list
+    background-color: #313131
+    .vsm-link
+      color: #fff
+      &:hover
+        color: #fff
+        background-color: rgba(30, 30, 33, 0.5)
+  .vsm-mobile-bg
+    background-color: #4285f4
+  .vsm-header
+    color: rgba(255, 255, 255, 0.7)
+  .vsm-badge.default-badge, .collapse-btn
+    color: #fff
+    background-color: #1e1e21
+  &.white-theme
+    background-color: #fff
+    .vsm-link
+      color: #262626
+    .vsm-item
+      &.mobile-item >
+      .vsm-link
+        color: #fff
+        .vsm-icon
+          color: #fff
+          background-color: rgba(0, 0, 0, 0)
+      &.first-item
+        > .vsm-link > .vsm-icon
+          color: #262626
+          background-color: #bbc5d6
+        &.active-item > .vsm-link, &.parent-active-item > .vsm-link
+          -webkit-box-shadow: 3px 0px 0px 0px #4285f4 inset
+          box-shadow: 3px 0px 0px 0px #4285f4 inset
+        &.active-item > .vsm-link > .vsm-icon, &.parent-active-item > .vsm-link > .vsm-icon
+          color: #fff
+          background-color: #262626
+    &.rtl .vsm-item.first-item
+      &.active-item > .vsm-link, &.parent-active-item > .vsm-link
+        -webkit-box-shadow: -3px 0px 0px 0px #4285f4 inset
+        box-shadow: -3px 0px 0px 0px #4285f4 inset
+    &.vsm-default
+      .vsm-item.first-item.open-item > .vsm-link
+        color: #fff
+        background-color: #4285f4
+        > .vsm-icon
+          color: #fff
+          background-color: rgba(0, 0, 0, 0)
+      .vsm-link:hover
+        color: #262626
+        background-color: #f2f2f2
+    .vsm-dropdown > .vsm-list
+      background-color: #e3e3e3
+      .vsm-link
+        color: #262626
+        &:hover
+          color: #262626
+          background-color: #f2f2f2
+    .vsm-mobile-bg
+      background-color: #4285f4
+    .vsm-header
+      color: rgba(38, 38, 38, 0.7)
+    .vsm-badge.default-badge
+      color: #262626
+      background-color: #e0e0e0
+    .collapse-btn
+      color: #262626
+      background-color: #f2f2f2
+  .custom__ps
+    height: 100vh
+    max-height: 100vh
+    +r(768)
+      padding-bottom: 0px
+    .ps__rail-y
+      width: 3px
+      z-index: 90
+      .ps__thumb-y
+        width: 3px
+        right: 1px
+
+@-webkit-keyframes slide-animation
+  0%
+    width: 0%
+
+  100%
+    width: 100%
+
+@keyframes slide-animation
+  0%
+    width: 0%
+
+  100%
+    width: 100%
+
+.v-sidebar-menu
+  bottom: 0px
+  width: 300px
+  max-width: 300px
+  &.vsm-collapsed
+    +r(768)
+      left: -350px
+      transition: 0.3s
+      width: 250px!important
+  &.vsm-default
+    +r(768)
+      max-width: 100%
+      left: 0
+      transition: 0.3s
+      width: 100%!important
+  .custom__ps
+    .ps__rail-x
+      display: none
+.active-item, .parent-active-item
+  i:before
+    color: #64DD17!important
+.vsm-dropdown
+  .vsm-list
+    .vsm-link
+      padding-left: 40px
+  .vsm-item.active-item
+    a.router-link-active
+      span
+        color: #64DD17 !important
+
+
+.v-sidebar-menu .vsm-item.first-item > .vsm-link > .vsm-icon
+  background-color: transparent !important
+  &.exit_to_app
+    transform: rotate(180deg)
+.vsm-collapsed
+  .vsm-list
+    .head
+      width: 50px!important
+      +r(768)
+        width: 0px!important
+        padding: 0px!important
+.vsm-list
+  padding-top: 60px
+  height: fit-content
+  min-height: 100%
+  position: relative
+  display: flex
+  flex-direction: column
+  +r(768)
+    padding-bottom: 100px
+  .head
+    background-color: transparent
+    display: grid
+    grid-template-columns: 1fr 30px
+    padding: 15px 10px
+    position: fixed
+    top: 0px
+    width: 300px
+    height: 60px
+    z-index: 99
+    transition: all 0.3s linear
+    .vsm-collapsed &
+      +r(1200)
+        +r(1100)
+          grid-template-columns: auto
+          +r(768)
+            width: 100%
+            padding: 15px 0px
+    .logo
+      transition: 0.3s
+      img
+        object-fit: contain
+      +r(1100)
+        display: none
+        +r(768)
+          display: flex
+    .v-btn
+      background-color: #19B200
+      border-radius: 4px
+      margin: 0px
+      width: 30px
+      height: 30px
+      position: absolute!important
+      right: 12px
+      top: 50%
+      transform: translateY(-50%)
+      +r(1100)
+        position: unset!important
+        right: unset
+        top: unset
+        transform: translateY(0)
+      +r(768)
+        background-color: #FAFAFA
+        box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.4)
+        width: 40px
+        height: 40px
+        border-radius: 50%
+        position: fixed!important
+        display: flex
+        bottom: 100px
+        left: 50%
+        z-index: 99
+        transform: translateX(-50%)
+      &:hover
+        &:before
+          border-radius: 0px
+          +r(768)
+            border-radius: 50%
+      &__content
+        display: flex
+        flex-direction: column
+        align-items: flex-start
+        padding: 7px
+        .line__menu
+          display: none
+          width: 100%
+          height: 2px
+          border-radius: 3px
+          background-color: white
+          transition: 0.3s
+          margin-bottom: 1.7px
+          +r(768)
+            background-color: black
+            margin: 2px auto
+            height: 3px
+            border: 2px
+            &:first-child
+              width: 80%
+            &:nth-child(5)
+              width: 80%
+          &:nth-child(2n)
+            width: 60%
+            +r(768)
+              display: none!important
+        .close__menu__icon
+          display: initial
+          color: white
+          font-size: 18px
+          position: absolute
+          top: 50%
+          left: 50%
+          transform: translateY(-50%) translateX(-50%)
+          +r(768)
+            display: none
+        .close__menu__icon__mobile
+          display: none
+          +r(768)
+            display: initial
+            color: black
+        &:hover
+          .line__menu
+            &:nth-child(2n)
+              width: 100%
+            &:nth-child(2n+1)
+              width: 60%
+              +r(768)
+                width: 100%
+
+
+
+.v-sidebar-menu.vsm-collapsed
+  .vsm-list .head
+    padding: 15px 10px
+    justify-content: flex-start
+    //background-color: transparent
+    .v-btn
+      grid-column-start: 2
+      .line__menu
+        display: initial
+      .close__menu__icon
+        display: none
+.sitebar__footer
+  padding: 10px
+  margin-top: auto
+  padding-left: 15px
+  .by-ordcore
+    display: flex
+    align-items: center
+    justify-content: flex-start
+    img
+      width: 15px
+      height: 15px
+      object-fit: contain
+      margin-right: 10px
+    &__text
+      color: #A1A8C3
+      font-size: 15px
+      line-height: 15px
+      opacity: 0
+      width: 0px
+      height: 15px
+      overflow: hidden
+      transform: translateX(50px) scale(0)
+      transition: 0s
+      &.open
+        transition: 0.3s
+        opacity: 1
+        width: initial
+        transform: translateX(0px) scale(1)
+

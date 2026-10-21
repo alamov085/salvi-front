@@ -1,0 +1,279 @@
+.v-table__overflow
+  &::-webkit-scrollbar-track
+    //background-color: transparent
+  &::-webkit-scrollbar
+    height: 10px
+    border-radius: 2px
+    background: #eeeeee
+    //background-color: transparent
+  &::-webkit-scrollbar-thumb
+    background-color: rgba(100, 108, 154, 0.8)
+    border: 0px solid transparent
+    border-radius: 4px
+    &:hover
+      background-color: rgba(100, 108, 154, 1)
+.detail-line
+  font-family: "Montserrat", sans-serif
+
+table.v-table tbody td
+  vertical-align: middle
+  color: #646C9A
+  font-size: 13px
+  line-height: 150%
+  font-weight: 400
+
+table.v-table tbody tr.no-available
+  -webkit-filter: grayscale(100%)
+    filter: grayscale(100%)
+
+td.icon .v-icon
+  border-radius: 50%
+  font-size: 13px
+  padding: 3px
+th.icon
+  max-width: 30px
+  width: 30px
+  padding-left: 10px!important
+  padding-right: 10px!important
+td
+  .theme--light.v-btn:not(.v-btn--icon):not(.v-btn--flat)
+    background-color: #646c9a
+  .icon-redact
+    font-size: 18px
+    transition: 0.3s
+    display: block
+    &:before
+      transition: 0.3s
+    &:hover:before
+      color: #64DD17
+  .theme--light.v-btn:not(.v-btn--icon):not(.v-btn--flat)
+    background-color: #646c9a
+
+.v-btn.btn__setting__table
+  min-width: 65px
+  width: 65px
+  .arrow-icon
+    transition: 0.3s!important
+.v-menu__activator--active
+  .v-btn.btn__setting__table
+    .arrow-icon
+      transition: 0.3s!important
+      transform: rotate(-180deg)
+
+.table-reset.info
+  background-color: #2196f3!important
+  border-color: #2196f3!important
+.theme--light .v-dialog:not(.v-dialog--fullscreen)
+  max-height: 500px!important
+.theme--light.v-table thead th
+  vertical-align: middle
+  color: #646C9A
+  font-weight: 600!important
+  font-size: 13px
+  line-height: 150%
+.v-datatable__actions__select
+  display: none!important
+
+.theme--light.v-table thead tr:first-child
+  box-shadow: inset 0px -1px 0px #E2E2E2
+  border: none !important
+  border-top: none !important
+  border-bottom: none!important
+.theme--light.v-datatable .v-datatable__actions
+  border-top: 0px
+  border-top: none
+.theme--light.v-table tbody tr
+  box-shadow: inset 0px -1px 0px #E2E2E2
+  border: none !important
+  border-top: none !important
+  border-bottom: none!important
+.theme--light.v-table tbody tr:hover:not(.v-datatable__expand-row)
+  background: #E2E2E2 !important
+  cursor: pointer
+.v-datatable__progress
+  display: none
+.table__tamplate-2 table.v-table tbody td,.theme--light.v-table thead th
+  padding-top: 15px!important
+  padding-bottom: 15px!important
+  position: relative
+  cursor: default
+  white-space: nowrap
+.table__tamplate-2
+  box-shadow: 2px 2px 15px rgba(0, 12, 53, 0.1) !important
+  border-radius: 4px!important
+  background-color: #fff
+  .v-menu
+    position: relative
+    max-height: 18px
+    display: flex
+    .v-icon
+      color: #646C9A
+  &__drop
+  .v-input__control
+    .theme--light.v-icon
+      color: #5578EB !important
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05) !important
+      transition: 0.3s
+
+.status-desc
+  width: 100%
+  max-width: 210px
+  white-space: nowrap
+  min-width: 120px
+  height: 25px
+  max-height: 25px
+  padding: 4px 5px
+  line-height: inherit
+  display: flex
+  align-items: center
+  justify-content: center
+  font-size: 12px
+  color: white
+  border-radius: 4px
+  &.default
+    background-color: #F0F3FF
+    color: #646C9A
+  &.green
+    background-color: #64DD17
+  &.yellow
+    background-color: #F9D835
+  &.orange
+    background-color: #FCBD00
+  &.red
+    background-color: #F24949
+  &.violet
+    background-color: #7F96E2
+  &.turquoise
+    background-color: #86C3FC
+  &.blue
+    background-color: #5578EB
+  &.brown
+    background-color: #9A7171
+  &.light-blue
+    background-color: #82c2b4
+  &.yellow-green
+    background-color: #dae060
+  &.light-green
+    background-color: #8bd938
+  &.light-brown
+    background-color: #ff7b5a
+.chips-desc
+  transition: 0.3s
+  width: auto
+  white-space: nowrap
+  height: 25px
+  max-height: 25px
+  padding: 4px 5px
+  line-height: inherit
+  display: flex
+  align-items: center
+  justify-content: center
+  font-size: 12px
+  color: white
+  border-radius: 4px
+  &.default
+    background-color: #F0F3FF
+    color: #646C9A
+  &.default.hover
+    &:hover
+      background-color: #646C9A
+      color: #F0F3FF
+//------------------------------------drop-row-setting
+.action__th
+  width: 50px
+  text-align: center
+.changed
+  background: rgba(118, 255, 59, 0.2)
+.action__td
+  height: 100%!important
+  width: 50px
+  .v-menu
+    position: relative
+    max-height: 18px
+    display: flex
+    button
+      margin: 0px
+    .v-icon
+      color: #646C9A
+  &__drop
+    .v-list
+      min-width: 218px
+      &:last-child
+        margin-right: 0px
+      span
+        font-size: 10px
+        color: #5578EB
+        text-transform: uppercase
+        padding: 0 20px
+        height: 36px
+        display: flex
+        align-items: center
+        width: 100%
+        font-weight: bold
+      .v-list__tile
+        height: 36px
+        padding: 0 20px
+        overflow: hidden
+        cursor: pointer
+        color: #646C9A
+        &:hover
+          background-color: #F7F8FA
+        span
+          padding: 0px
+          height: auto
+          font-size: initial
+.v-menu__activator
+  .v-btn
+    box-shadow: none!important
+.setting__td
+  position: relative
+  display: flex
+  flex-direction: column
+//modal-------------------------------------------------------------------
+.v-dialog__content--active
+  background-color: rgba(0,0,0,0.2)
+.toollip__catecory
+  background: #FFFFFF!important
+  border: 1px solid #E8ECFA!important
+  box-sizing: border-box!important
+  box-shadow: 2px 2px 10px rgba(0, 35, 219, 0.05) !important
+  border-radius: 4px!important
+  span
+    color: #5578EB!important
+    font-size: 10px!important
+.elevation-1
+  .theme--light.v-table tbody
+    tr
+      &.add
+        background-color: rgba(240, 243, 255, 0.6) !important
+        &:hover
+          background-color: rgba(240, 243, 255, 0.6) !important
+
+.theme--light.v-table tbody tr.custom_product
+  background: #f0f3ff
+  &:hover
+    background: #f0f3ff!important
+.chipsBox
+  .chipsBox_item
+    color: #646C9A
+    -webkit-box-align: center
+    -ms-flex-align: center
+    align-items: center
+    display: -ms-inline-flexbox
+    display: inline-flex
+    vertical-align: middle
+    cursor: default
+    height: 32px
+    -webkit-box-pack: justify
+    -ms-flex-pack: justify
+    justify-content: space-between
+    padding: 0 12px
+    white-space: nowrap
+    z-index: 1
+    background: #F0F3FF !important
+    border-radius: 4px !important
+    color: #646C9A
+    font-size: 13px
+    margin: 4px
+    outline: none
+    position: relative
