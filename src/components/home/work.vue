@@ -66,7 +66,7 @@ export default {
 <style lang="scss" scoped>
 .work {
   padding: 110px 0 110px;
-  background: linear-gradient(6.96deg, #e9ecef 5.1%, #ffffff 91.11%);
+  background: linear-gradient(180deg, #ffffff 0%, #e9ecef 100%);
 
   &__title {
     position: relative;

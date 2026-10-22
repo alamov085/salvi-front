@@ -6,6 +6,7 @@
       <Second />
       <Third />
       <Work />
+      <Tysha />
       <Delivery />
       <FAQ />
     </main>
@@ -21,6 +22,7 @@ import First from "../components/home/first.vue";
 import Second from "../components/home/second.vue";
 import Third from "../components/home/third.vue";
 import Work from "../components/home/work.vue";
+import Tysha from "../components/home/tysha.vue";
 import Delivery from "../components/home/delivery.vue";
 import FAQ from "../components/home/faq.vue";
 
@@ -33,6 +35,7 @@ export default {
     Second,
     Third,
     Work,
+    Tysha,
     Delivery,
     FAQ,
   },
