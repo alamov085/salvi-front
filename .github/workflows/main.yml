@@ -1,120 +1,25 @@
 name: Production Deploy
+
 on:
   workflow_dispatch:
     inputs:
-      logLevel:
-        description: 'Log level'
+      branch:
+        description: 'Git branch to deploy'
         required: false
-        default: 'warning'
-        type: choice
-        options:
-          - info
-          - warning
-          - debug
+        default: 'master'
+
 jobs:
-#  start_notification:
-#    name: Google Chat Notification Start
-#    runs-on: salvi
-#    steps:
-#      - name: Google Chat Notification Start
-#        if: always()
-#        uses: Co-qn/google-chat-notification@releases/v1
-#        with:
-#          name: 'Starting deployment (Production Deploy)!'
-#          url:  ${{ secrets.GOOGLE_CHAT_CHANNEL_TOKEN }}
-#          status:  ${{ job.status }}
-  make_backup:
-    name: Make backup
-    runs-on: salvi
-#    needs: [ start_notification ]
+  deploy:
+    name: Deploy Frontend via Script
+    runs-on: ubuntu-latest
     steps:
-      - name: Backup
+      - name: Execute frontend deployment script on server
         uses: fifsky/ssh-action@master
         with:
-          command: |
-            tar -cpzf /var/www/salvi/auto-deployment-backup/salvi.ua.tar.gz /var/www/salvi/www
           host: ${{ vars.PROD_SERVER_IP }}
           user: ${{ secrets.PROD_SERVER_USERNAME }}
           pass: ${{ secrets.PROD_SERVER_PASSWORD }}
           port: ${{ vars.PROD_SERVER_PORT }}
-  git_pull:
-    name: Git Pull & Prepare Files
-    runs-on: salvi
-    needs: [ make_backup ]
-    steps:
-      - name: Git Pull
-        uses: fifsky/ssh-action@master
-        with:
           command: |
-            cd ${{ vars.PROD_SERVER_WORKING_DIR }}
-            git fetch --all
-            git reset --hard origin/master
-            git pull
-            find . -type d \( -name '.idea' -o -name '.vscode' \) -print0 | xargs -0 rm -rf
-          host: ${{ vars.PROD_SERVER_IP }}
-          user: ${{ secrets.PROD_SERVER_USERNAME }}
-          pass: ${{ secrets.PROD_SERVER_PASSWORD }}
-          port: ${{ vars.PROD_SERVER_PORT }}
-  npm_install:
-    name:  NPM Install Modules
-    runs-on: salvi
-    needs: [ git_pull ]
-    steps:
-      - name: npm install
-        uses: fifsky/ssh-action@master
-        with:
-          command: |
-            cd ${{ vars.PROD_SERVER_WORKING_DIR }}
-            npm ci
-          host: ${{ vars.PROD_SERVER_IP }}
-          user: ${{ secrets.PROD_SERVER_USERNAME }}
-          pass: ${{ secrets.PROD_SERVER_PASSWORD }}
-          port: ${{ vars.PROD_SERVER_PORT }}
-  npm_build:
-    name: NPM Build Project (into new dist_new folder)
-    runs-on: salvi
-    needs: [ npm_install ]
-    steps:
-      - name: npm build project
-        uses: fifsky/ssh-action@master
-        with:
-          command: |
-            set -e
-            cd ${{ vars.PROD_SERVER_WORKING_DIR }}
-            rm -rf dist_new
-            npm run build -- --dest dist_new
-          host: ${{ vars.PROD_SERVER_IP }}
-          user: ${{ secrets.PROD_SERVER_USERNAME }}
-          pass: ${{ secrets.PROD_SERVER_PASSWORD }}
-          port: ${{ vars.PROD_SERVER_PORT }}
-  swap_dist:
-    name: Atomically Swap dist Folder
-    runs-on: salvi
-    needs: [ npm_build ]
-    steps:
-      - name: swap dist
-        uses: fifsky/ssh-action@master
-        with:
-          command: |
-            set -e
-            cd ${{ vars.PROD_SERVER_WORKING_DIR }}
-            rm -rf dist_old
-            mv dist dist_old
-            mv dist_new dist
-            rm -rf dist_old
-          host: ${{ vars.PROD_SERVER_IP }}
-          user: ${{ secrets.PROD_SERVER_USERNAME }}
-          pass: ${{ secrets.PROD_SERVER_PASSWORD }}
-          port: ${{ vars.PROD_SERVER_PORT }}
-#  finish_notification:
-#    name: Google Chat Finish Notification
-#    runs-on: salvi
-#    needs: [ swap_dist ]
-#    steps:
-#      - name: Google Chat Notification Start
-#        if: always()
-#        uses: Co-qn/google-chat-notification@releases/v1
-#        with:
-#          name: 'Completion deployment (Production Deploy)!'
-#          url:  ${{ secrets.GOOGLE_CHAT_CHANNEL_TOKEN }}
-#          status:  ${{ job.status }}
+            export DEPLOY_BRANCH="${{ github.event.inputs.branch || 'master' }}"
+            bash ${{ vars.PROD_SERVER_WORKING_DIR }}/deploy.sh
