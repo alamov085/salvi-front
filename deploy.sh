@@ -6,7 +6,7 @@ set -e
 
 PROJECT_DIR="/var/www/salvi/www"
 BACKUP_DIR="/var/www/salvi/auto-deployment-backup"
-BRANCH="${DEPLOY_BRANCH:-master}"
+BRANCH="${DEPLOY_BRANCH:-main}"
 
 log() {
     echo "[$(date +'%Y-%m-%d %H:%M:%S')] $1"
