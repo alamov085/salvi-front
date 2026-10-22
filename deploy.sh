@@ -55,7 +55,7 @@ git pull origin "$BRANCH"
 
 # Очистка мусорных файлов IDE
 find . -type d \( -name '.idea' -o -name '.vscode' \) -exec rm -rf {} + 2>/dev/null || true
-
+git remote set-url origin git@github.com:salvillc/salvi-backend.git  salvillc
 # 3. Устанавливаем зависимости npm
 log "3. Устанавливаем зависимости (npm ci)..."
 npm ci
