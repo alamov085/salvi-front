@@ -44,8 +44,24 @@ cd "$PROJECT_DIR"
 log "1. Создаем резервную копию..."
 mkdir -p "$BACKUP_DIR"
 BACKUP_FILE="$BACKUP_DIR/salvi_front_$(date +%F_%H-%M-%S).tar.gz"
-tar -cpzf "$BACKUP_FILE" --exclude='node_modules' --exclude='.git' "$PROJECT_DIR" 2>/dev/null || true
-log "Бэкап сохранен: $BACKUP_FILE"
+
+# Используем многопоточный pigz (2 ядра), если установлен, иначе обычный gzip
+if command -v pigz >/dev/null 2>&1; then
+    COMPRESSOR="pigz -p 2"
+    tar -cpf - --exclude='node_modules' --exclude='.git' "$PROJECT_DIR" 2>/dev/null | pigz -p 2 > "$BACKUP_FILE"
+else
+    COMPRESSOR="gzip"
+    tar -cpf - --exclude='node_modules' --exclude='.git' "$PROJECT_DIR" 2>/dev/null | gzip > "$BACKUP_FILE"
+fi
+
+BACKUP_SIZE=$(du -h "$BACKUP_FILE" 2>/dev/null | cut -f1)
+log "Бэкап сохранен ($COMPRESSOR, размер: ${BACKUP_SIZE:-0}): $BACKUP_FILE"
+
+# Удаляем старые бэкапы фронтенда, оставляя только свежесозданный
+if [ -s "$BACKUP_FILE" ]; then
+    log "Удаляем старые бэкапы salvi_front, оставляя только текущий..."
+    find "$BACKUP_DIR" -maxdepth 1 -type f -name "salvi_front_*.tar.gz" ! -name "$(basename "$BACKUP_FILE")" -exec rm -f {} + 2>/dev/null || true
+fi
 
 # 2. Подтягиваем свежий код из Git
 log "2. Обновляем кодовую базу Git (ветка: $BRANCH)..."
