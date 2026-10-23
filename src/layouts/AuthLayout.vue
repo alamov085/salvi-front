@@ -38,21 +38,13 @@ export default {
   },
     mounted() {
         var script = document.createElement('script');
-        // script.setAttribute("data-b24-form", "click/35/9qc2mj");
-        // script.setAttribute("data-skip-moving", "true");
-        //
-        // script.append(" (function(w,d,u){\n" +
-        //     "                var s=d.createElement('script');s.async=true;s.src=u+'?'+(Date.now()/180000|0);\n" +
-        //     "                var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);\n" +
-        //     "        })(window,document,'https://cdn.bitrix24.eu/b7849145/crm/form/loader_35.js');");
-        script.setAttribute("data-b24-form", "inline/37/xxzc5h");
-        script.setAttribute("data-b24-form-telemetry-sign", "v1:37:site.c5b25bd668fd8db6010213613f246698bf2236c1acec08912e0edfce5ee1ac60");
+        script.setAttribute("data-b24-form", "click/35/9qc2mj");
         script.setAttribute("data-skip-moving", "true");
 
-        script.append(" (function(w,d,u){ \n" +
-          "var s=d.createElement('script');s.async=true;s.src=u+'?'+(Date.now()/180000|0);\n" +
-          "var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);\n" +
-          " })(window,document,'https://cdn.bitrix24.eu/b7849145/crm/form/loader_37.js');");
+        script.append(" (function(w,d,u){\n" +
+            "                var s=d.createElement('script');s.async=true;s.src=u+'?'+(Date.now()/180000|0);\n" +
+            "                var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);\n" +
+            "        })(window,document,'https://cdn.bitrix24.eu/b7849145/crm/form/loader_35.js');");
         var button = document.createElement('button')
         button.classList.add('b24-web-form-popup-btn-1')
         document.body.appendChild(script);
