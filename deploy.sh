@@ -65,16 +65,17 @@ fi
 
 # 2. Подтягиваем свежий код из Git
 log "2. Обновляем кодовую базу Git (ветка: $BRANCH)..."
+git remote set-url origin git@github.com:salvillc/salvi-front.git 2>/dev/null || true
 git fetch --all
 git reset --hard "origin/$BRANCH"
 git pull origin "$BRANCH"
 
 # Очистка мусорных файлов IDE
 find . -type d \( -name '.idea' -o -name '.vscode' \) -exec rm -rf {} + 2>/dev/null || true
-git remote set-url origin git@github.com:salvillc/salvi-backend.git  salvillc
+
 # 3. Устанавливаем зависимости npm
-log "3. Устанавливаем зависимости (npm ci)..."
-npm ci
+log "3. Устанавливаем зависимости (npm install)..."
+npm install --unsafe-perm
 
 # 4. Собираем SPA-приложение во временную папку dist_new
 log "4. Собираем проект (npm run build)..."
