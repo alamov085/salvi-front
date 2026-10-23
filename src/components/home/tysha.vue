@@ -39,17 +39,16 @@
           </div>
 
           <!-- Кнопка заявки в Bitrix24 та підпис під нею -->
-          <a
+          <button
+            ref="btnB24"
             class="ty-btn"
-            href="https://b24-ixvj92.bitrix24.site/crm_form_ecrz1/?telemetry_sign=v1%3A37%3Adirect_link.9231506f4a11626315e99003112db37d381073fbf4751d8c010a62084a1fa9e3"
-            target="_blank"
-            rel="noopener"
+            type="button"
           >
             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M5 11h14v10H5zM8 11V8a4 4 0 0 1 8 0v3"/>
             </svg>
             Обговорити умови конфіденційно
-          </a>
+          </button>
           <small class="ty-note">Адреси ми не запитуємо до підписання NDA</small>
         </div>
       </div>
@@ -604,6 +603,7 @@ export default {
   },
   mounted() {
     window.addEventListener("keydown", this.handleGlobalKeydown);
+    this.initB24Form();
   },
   beforeDestroy() {
     window.removeEventListener("keydown", this.handleGlobalKeydown);
@@ -684,6 +684,36 @@ export default {
           firstEl.focus();
         }
       }
+    },
+    initB24Form() {
+      if (typeof document === "undefined") return;
+      const btn = this.$refs.btnB24;
+      if (!btn) return;
+
+      if (
+        btn.previousElementSibling &&
+        btn.previousElementSibling.getAttribute &&
+        btn.previousElementSibling.getAttribute("data-b24-form") === "click/37/xxzc5h"
+      ) {
+        return;
+      }
+
+      const script = document.createElement("script");
+      script.setAttribute("data-b24-form", "click/37/xxzc5h");
+      script.setAttribute(
+        "data-b24-form-telemetry-sign",
+        "v1:37:site.c5b25bd668fd8db6010213613f246698bf2236c1acec08912e0edfce5ee1ac60"
+      );
+      script.setAttribute("data-skip-moving", "true");
+      script.innerHTML = `(function(w,d,u){
+  var s=d.createElement('script');
+  s.async=true;
+  s.src=u+'?'+(Date.now()/180000|0);
+  var h=d.getElementsByTagName('script')[0];
+  h.parentNode.insertBefore(s,h);
+})(window,document,'https://cdn.bitrix24.eu/b7849145/crm/form/loader_37.js');`;
+
+      btn.parentNode.insertBefore(script, btn);
     },
   },
 };
@@ -797,6 +827,9 @@ export default {
     text-decoration: none;
     white-space: nowrap;
     transition: background 0.2s, transform 0.2s;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
 
     &:hover {
       background: var(--gd);
