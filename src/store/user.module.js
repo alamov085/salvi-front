@@ -30,7 +30,13 @@ const actions = {
 }
 const mutations = {
   set(state, ctx) {
-    localStorage.setItem("current_user", ctx)
+    if (ctx === undefined || ctx === null) {
+      localStorage.removeItem("current_user")
+      state.current_user = null
+      return
+    }
+    const data = typeof ctx === "string" ? ctx : JSON.stringify(ctx)
+    localStorage.setItem("current_user", data)
     state.current_user = localStorage.getItem("current_user")
   },
   setLocation(state, ctx) {

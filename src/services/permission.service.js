@@ -31,10 +31,15 @@ const Permission = {
   },
   profileCompleted() {
     let data = localStorage.getItem("current_user")
-    if (data === null) {
+    if (!data || data === "undefined") {
       return true
     }
-    let user = JSON.parse(data)
+    let user = null
+    try {
+      user = JSON.parse(data)
+    } catch (e) {
+      return true
+    }
     if (user === null) {
       return true
     }
